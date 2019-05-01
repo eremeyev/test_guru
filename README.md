@@ -1,1 +1,1 @@
-Test Guru
+Ruby on Rails Thinknetika course
