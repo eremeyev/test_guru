@@ -1,5 +1,3 @@
-# README
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -55,3 +53,4 @@ Ability
 Questionary
   belongs_to :user
   has_and_belongs_to_many :tickets
+  
