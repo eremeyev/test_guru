@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :category
-  belongs_to :user
+  has_and_belongs_to_many :users
   validates :title, :level, presence: true
   
   def self.by_category(category_title)
