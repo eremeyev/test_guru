@@ -3,9 +3,7 @@ class Test < ApplicationRecord
   has_and_belongs_to_many :users
   validates :title, :level, presence: true
   
-  def self.by_category(category_title)
-    Category.find_by(title: category_title).tests.order(:desc)
-  rescue 
-    []
+  def self.titles_by_category(category_title)
+    Test.joins(:category).where("categories.title = ?", category_title).pluck(:title)
   end
 end
