@@ -14,10 +14,11 @@ Category.find_or_create_by(title: 'Operating systems')
 test1 = Test.find_or_create_by(title: "Rails", level: 0, category_id: 1)
 test2 = Test.find_or_create_by(title: "Rails", level: 1, category_id: 1)
 test3 = Test.find_or_create_by(title: "Ruby",  level: 0, category_id: 2)
-test4 = Test.find_or_create_by(title: "HTML",  level: 0, category_id: 3)
-test5 = Test.find_or_create_by(title: "CSS",   level: 0, category_id: 4)
+test4 = Test.find_or_create_by(title: "HTML",  level: 5, category_id: 3)
+test5 = Test.find_or_create_by(title: "CSS",   level: 7, category_id: 4)
 
 question1 = Question.find_or_create_by(test_id: test1.id, body: 'What is View ?')
+question2 = Question.find_or_create_by(test_id: test2.id, body: 'What is Model ?')
 user1 = User.find_or_create_by(login: 'john_doe', password: '123456', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
 user2 = User.find_or_create_by(login: 'foo_bar', password: '123456', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
 
@@ -25,4 +26,5 @@ test1.users << user1
 test2.author = user2
 test2.save
 
-Answer.create(question_id: question1.id, user_id: user1.id, body: 'View is what we see in browser', correct: 'Yes')
+Answer.find_or_create_by(question_id: question1.id, user_id: user1.id, body: 'View is what we see in browser', correct: 'Yes')
+Answer.find_or_create_by(question_id: question2.id, user_id: user2.id, body: 'Model is table', correct: 'No')
