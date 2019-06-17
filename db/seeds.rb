@@ -21,10 +21,8 @@ question1 = Question.find_or_create_by(test_id: test1.id, body: 'What is View ?'
 user1 = User.find_or_create_by(login: 'john_doe', password: '123456', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
 user2 = User.find_or_create_by(login: 'foo_bar', password: '123456', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
 
-user1.tests << test1
-user1.tests << test2
-user1.tests << test3
-user2.tests << test4
-user2.tests << test5
+test1.users << user1
+test2.author = user2
+test2.save
 
 Answer.create(question_id: question1.id, user_id: user1.id, body: 'View is what we see in browser', correct: 'Yes')
