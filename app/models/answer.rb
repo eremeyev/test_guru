@@ -1,7 +1,7 @@
 class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :user
-  scope :right, -> { where(correct: 'Yes') }
+  scope :right, -> { where(correct: true) }
   validate :max_count
   ANSWERS_LIMIT = 4
 
