@@ -6,25 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.find_or_create_by(title: 'Front end')
-Category.find_or_create_by(title: 'Back end')
-Category.find_or_create_by(title: 'Hardware programming')
-Category.find_or_create_by(title: 'Operating systems')
+puts "-- Create Categories"
+categories = []
+categories << Category.find_or_create_by(title: 'Front end')
+categories << Category.find_or_create_by(title: 'Back end')
+categories << Category.find_or_create_by(title: 'Hardware programming')
+categories << Category.find_or_create_by(title: 'Operating systems')
 
-test1 = Test.find_or_create_by(title: "Rails", level: 0, category_id: 1)
-test2 = Test.find_or_create_by(title: "Rails", level: 1, category_id: 1)
-test3 = Test.find_or_create_by(title: "Ruby",  level: 0, category_id: 2)
-test4 = Test.find_or_create_by(title: "HTML",  level: 5, category_id: 3)
-test5 = Test.find_or_create_by(title: "CSS",   level: 7, category_id: 4)
+puts "-- Create Users"
+users = []
+users << User.find_or_create_by(login: 'john_doe', password: '123456', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
+users << User.find_or_create_by(login: 'foo_bar', password: '123456', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
 
-question1 = Question.find_or_create_by(test_id: test1.id, body: 'What is View ?')
-question2 = Question.find_or_create_by(test_id: test2.id, body: 'What is Model ?')
-user1 = User.find_or_create_by(login: 'john_doe', password: '123456', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
-user2 = User.find_or_create_by(login: 'foo_bar', password: '123456', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
 
-test1.users << user1
-test2.author = user2
-test2.save
+puts "-- Create Tests"
+tests = []
+tests << Test.find_or_create_by(title: "Rails", level: 0, category_id: categories[0].id, author_id: users[0].id)
+tests << Test.find_or_create_by(title: "Rails", level: 1, category_id: categories[0].id, author_id: users[0].id)
+tests << Test.find_or_create_by(title: "Ruby",  level: 0, category_id: categories[1].id, author_id: users[1].id)
+tests << Test.find_or_create_by(title: "HTML",  level: 5, category_id: categories[2].id, author_id: users[1].id)
+tests << Test.find_or_create_by(title: "CSS",   level: 7, category_id: categories[3].id, author_id: users[1].id)
 
-Answer.find_or_create_by(question_id: question1.id, user_id: user1.id, body: 'View is what we see in browser', correct: 'Yes')
-Answer.find_or_create_by(question_id: question2.id, user_id: user2.id, body: 'Model is table', correct: 'No')
+puts "-- Create Questions"
+questions = []
+questions << Question.find_or_create_by(test_id: tests[0].id, body: 'What is View ?')
+questions << Question.find_or_create_by(test_id: tests[1].id, body: 'What is Model ?')
+
+puts "-- Connect users and tests"
+tests[0].users << users[0]
+tests[0].author = users[1]
+tests[0].save
+
+puts "-- Create Answers"
+Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is what we see in browser', correct: true)
+Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'Model is table', correct: false)
