@@ -1,0 +1,7 @@
+<h2>Create Question for Test "<%= @test.title %>"</h2>
+<%= form_for [@test, @question] do |f| %>
+  <%= hidden_field_tag :prot %>
+  <%= f.text_area :body %>
+  <br/>
+  <%= f.submit %>
+<% end %>
