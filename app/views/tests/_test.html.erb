@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= test_counter + 1 %>
+  </td>
+  <td>
+    <%= test.title %>
+  </td>
+  <td>
+    <%= link_to test.questions.count, test_questions_path(test_id: test) %>
+  </td>
+  <td>
+    <%= link_to 'Show', test_path(test) %>
+  </td>
+  <td>
+    <%= link_to 'Edit', edit_test_path(test) %>
+  </td>
+  <td>
+    <%= button_to "Delete", test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
+  </td>
+</tr>
