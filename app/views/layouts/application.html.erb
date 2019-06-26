@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <%= content_tag :h3, flash[:notice], style: "color:green;" if flash[:notice].present? %>
+    <%= link_to "Back", :back %>
     <%= yield %>
   </body>
 </html>
