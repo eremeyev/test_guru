@@ -4,7 +4,21 @@ Rails.application.routes.draw do
   get 'about', to: 'application#about'
 
   resources :tests do
-    resources :questions
+    resources :questions, shallow: true, only: %i[index new create edit show update destroy] do 
+      resources :answers, shallow: true, only: %i[index new create edit show update destroy]
+    end
+    
+    member do
+      post :start
+    end
   end
+  
+  resources :test_passages, only: %i[show update] do
+    member do
+      get :result
+    end
+  end
+  
+  root to: 'tests#index'
    
 end
