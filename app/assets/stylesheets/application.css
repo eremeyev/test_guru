@@ -13,27 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.header{
-  border-top: 1px solid black;
-  background: lightgrey;
-  margin-top: 1em;
-  padding: 0.5em 1em;
-}
-
-.main{
-  padding: 3em;
-}
-
-.footer{
-  border-bottom: 1px solid black;
-  background: lightgrey;
-  margin-top: 3em;
-  padding: 0.5em 1em;
-}
-
-div.field_with_errors label{
-  color: red;
-  height: 1em;
-}
-

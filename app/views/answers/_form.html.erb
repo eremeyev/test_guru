@@ -1,7 +1,0 @@
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.hidden_field :user_id %><br/>
-  Body: <%= f.text_field :body %><br/>
-  Is correct: <%= f.check_box :correct %>
-  <br/>
-  <%= f.submit %>
-<% end %>
