@@ -1,7 +1,8 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: %i[show update edit]
-  before_action :set_tests
+  before_action :set_test, only: %i[show update edit start destroy]
+  before_action :set_tests, only: %i[index]
   before_action :set_questions, only: %i[show update]
+  before_action :set_user, only: %i[start]
   
   def index
   end
@@ -32,6 +33,17 @@ class TestsController < ApplicationController
   
   def edit
   end
+  
+  def destroy
+    @test.destroy
+    flash[:notice] = "Test deleted"
+    redirect_to tests_path
+  end
+  
+  def start
+    TestPassage.find_or_create_by(test_id: @test.id, user_id: @user.id)
+    redirect_to @user.test_passage(@test)
+  end
 
   private
   
@@ -45,6 +57,10 @@ class TestsController < ApplicationController
   
   def set_questions
     @questions = @test.questions
+  end
+
+  def set_user
+    @user = User.first
   end
 
   def test_params

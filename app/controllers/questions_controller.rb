@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_test
+  before_action :set_test, only: %i[new create index destroy]
   before_action :set_question, only: %i[show edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -29,11 +29,11 @@ class QuestionsController < ApplicationController
   
   def update
     if @question.update(question_params)
-      redirect_to test_questions_path(test_id: @test.id)
+      redirect_to test_questions_path(test_id: @question.test.id)
     else
+      flash[:notice] = @question.errors.full_messages.join(' ')
       render :edit
     end
-    
   end
   
   def  destroy
@@ -50,13 +50,10 @@ class QuestionsController < ApplicationController
   
   def set_test
     @test = Test.find(params[:test_id])
-  rescue 
-    flash[:notice] = "Test not found. Redirected to last test's questions."
-    redirect_to test_questions_path(test_id: Test.last.id)
   end
   
   def set_question
-    @question = @test.questions.find(params[:id])
+    @question = Question.find(params[:id])
   end
   
   def question_params
@@ -65,6 +62,6 @@ class QuestionsController < ApplicationController
   
   def rescue_with_question_not_found
     flash[:notice] = "Question not found"
-    redirect_to test_questions_path(test_id: @test.id)
+    redirect_to test_questions_path(@question)
   end
 end
