@@ -29,8 +29,10 @@ tests << Test.find_or_create_by(title: "CSS",   level: 7, category_id: categorie
 
 puts "-- Create Questions"
 questions = []
-questions << Question.find_or_create_by(test_id: tests[0].id, body: 'What is View ?')
-questions << Question.find_or_create_by(test_id: tests[1].id, body: 'What is Model ?')
+questions << Question.find_or_create_by(number: 1, test_id: tests[0].id, body: 'What is View ?')
+questions << Question.find_or_create_by(number: 2, test_id: tests[0].id, body: 'What is Model ?')
+questions << Question.find_or_create_by(number: 3, test_id: tests[0].id, body: 'What is Controller ?')
+questions << Question.find_or_create_by(number: 4, test_id: tests[0].id, body: 'What is MVC ?')
 
 puts "-- Connect users and tests"
 tests[0].users << users[0]
@@ -39,4 +41,8 @@ tests[0].save
 
 puts "-- Create Answers"
 Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is what we see in browser', correct: true)
+Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is html', correct: true)
+Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is what we see in browser', correct: true)
+Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'Model is pattern', correct: true)
+Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'Model is class', correct: false)
 Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'Model is table', correct: false)

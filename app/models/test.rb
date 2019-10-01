@@ -1,8 +1,10 @@
 class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: :author_id
-  has_many :questions
-  has_and_belongs_to_many :users
+  has_many :questions, -> { order(:id) }
+  has_many :correct_answers, -> { where(correct: true) }, through: :questions, source: :answers
+  has_many :test_passages, dependent: :destroy
+  has_many :users, through: :test_passages
   validates :title, :level, presence: true
   validates :level, numericality: { only_integer: true,  greater_than_or_equal_to: 0 }
   scope :by_level, -> (level) { where(level: level) }
@@ -12,5 +14,16 @@ class Test < ApplicationRecord
   
   def self.titles_by_category(category_title)
     Test.joins(:category).where("categories.title = ?", category_title).pluck(:title).sort
+  end
+  
+  def percents_of_success(user)
+    correct_chosen_answers = correct_answers.ids - (correct_answers.ids - answer_ids(user))
+    correct_percents = 100.0 / correct_answers.size * correct_chosen_answers.size
+    return correct_percents.round(0) if correct_answers.present?
+    0
+  end
+  
+  def answer_ids(user)
+    test_passages.where(user: user).last.try(:answer_ids) || []
   end
 end

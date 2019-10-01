@@ -9,6 +9,9 @@
     <%= link_to test.questions.count, test_questions_path(test_id: test) %>
   </td>
   <td>
+    <%= progress_message(test, @current_user) %>
+  </td>
+  <td>
     <%= link_to 'Show', test_path(test) %>
   </td>
   <td>
@@ -16,5 +19,9 @@
   </td>
   <td>
     <%= button_to "Delete", test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
+  </td>
+  <td>
+    <%= button_to "Start", start_test_path(test) if test.questions.present? %>
+    <%= "No questions can't start test. Add questions." if test.questions.blank? %>
   </td>
 </tr>

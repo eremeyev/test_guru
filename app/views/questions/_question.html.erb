@@ -6,12 +6,12 @@
     <%= question.body %>
   </td>
   <td>
-    <%= link_to 'Show', test_question_path(test_id: @test.id, id: question.id) %>
+    <%= question.answers.size %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_test_question_path(test_id: @test.id, id: question.id) %>
+    <%= link_to 'Edit', edit_question_path(question) %>
   </td>
   <td>
-    <%= button_to "Delete", test_question_path(test_id: @test.id, id: question.id), method: :delete, data: {confirm: "Вы уверены?"} %>
+    <%= button_to "Delete", question_path(test_id: @test.id, id: question.id), method: :delete, data: {confirm: "Вы уверены?"} %>
   </td>
 </tr>

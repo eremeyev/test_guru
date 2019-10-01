@@ -1,6 +1,5 @@
 <%= form_for [@test, @question] do |f| %>
-  <%= hidden_field_tag :prot %>
   <%= f.text_area :body %>
-  <br/>
+  <%= render 'answers', locals: {f: f} if @question.persisted? %>
   <%= f.submit %>
 <% end %>
