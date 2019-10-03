@@ -10,8 +10,8 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = @question.answers.create(answer_params(params))
-    if @answer.persisted?
+    @answer = @question.answers.new(answer_params(params))
+    if @answer.save
       flash[:notice] = "Created."
       redirect_to question_path(@question)
     else 
