@@ -1,11 +1,6 @@
 module ApplicationHelper
   def path_to_back(options)
-    case options[:action]
-    when 'edit'
-      tests_path
-    else
-      tests_path
-    end
+    tests_path
   end
   
   def current_year
@@ -21,6 +16,6 @@ module ApplicationHelper
   end
   
   def nav
-    link_to "Tests", tests_path
+    link_to "Tests", user_tests_path(user_id: @current_user.id)
   end
 end

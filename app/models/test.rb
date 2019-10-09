@@ -11,6 +11,7 @@ class Test < ApplicationRecord
   scope :simple, -> { by_level(0..1) }
   scope :middle, -> { by_level(2..4) }
   scope :hard,   -> { bylevel(5..Float::INFINITY) }
+  PERCENTS_OF_SUCCESS = 85
   
   def self.titles_by_category(category_title)
     Test.joins(:category).where("categories.title = ?", category_title).pluck(:title).sort
@@ -21,6 +22,10 @@ class Test < ApplicationRecord
     correct_percents = 100.0 / correct_answers.size * correct_chosen_answers.size
     return correct_percents.round(0) if correct_answers.present?
     0
+  end
+  
+  def success?(user)
+    percents_of_success(user) >= Test::PERCENTS_OF_SUCCESS
   end
   
   def answer_ids(user)
