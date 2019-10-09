@@ -1,8 +1,8 @@
 class TestsController < ApplicationController
+  before_action :set_user, only: %i[index]
   before_action :set_test, only: %i[show update edit start destroy]
   before_action :set_tests, only: %i[index]
   before_action :set_questions, only: %i[show update]
-  before_action :set_user, only: %i[start]
   
   def index
   end
@@ -12,8 +12,7 @@ class TestsController < ApplicationController
   end
   
   def create
-    @test = Test.new(test_params)
-    @test.author = @current_user
+    @test = @current_user.my_tests.new(test_params)
     if @test.save
       flash[:notice] = "Created successfuly!"
       redirect_to tests_path
@@ -41,8 +40,8 @@ class TestsController < ApplicationController
   end
   
   def start
-    TestPassage.find_or_create_by(test_id: @test.id, user_id: @user.id)
-    redirect_to @user.test_passage(@test)
+    TestPassage.find_or_create_by(test_id: @test.id, user_id: @current_user.id)
+    redirect_to @current_user.test_passage(@test)
   end
 
   private
@@ -52,7 +51,7 @@ class TestsController < ApplicationController
   end
   
   def set_tests
-    @tests = Test.all
+    @tests = @user.tests
   end
   
   def set_questions
@@ -60,7 +59,7 @@ class TestsController < ApplicationController
   end
 
   def set_user
-    @user = User.first
+    @user = User.find(params[:user_id])
   end
 
   def test_params

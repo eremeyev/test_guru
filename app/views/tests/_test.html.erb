@@ -12,13 +12,13 @@
     <%= progress_message(test, @current_user) %>
   </td>
   <td>
-    <%= link_to 'Show', test_path(test) %>
+    <%#= link_to 'Show', test_path(test) %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_test_path(test) %>
+    <%#= link_to 'Edit', edit_test_path(test) %>
   </td>
   <td>
-    <%= button_to "Delete", test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
+    <%#= button_to "Delete", test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
   </td>
   <td>
     <%= button_to "Start", start_test_path(test) if test.questions.present? %>
