@@ -40,7 +40,8 @@ class TestsController < ApplicationController
   end
   
   def start
-    TestPassage.find_or_create_by(test_id: @test.id, user_id: @current_user.id)
+    test_passage = TestPassage.find_or_create_by(test_id: @test.id, user_id: @current_user.id)
+    test_passage.prepare_start!
     redirect_to @current_user.test_passage(@test)
   end
 

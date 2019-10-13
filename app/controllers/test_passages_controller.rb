@@ -19,32 +19,21 @@ class TestPassagesController < ApplicationController
   end
   
   def update
-    @test_passage.answer_ids ||= []
-    case params[:commit]
-    when 'Previous'
-      @test_passage.answer_ids -= params[:answer_ids].map(&:to_i)
-      @test_passage.answer_ids += params[:checked_answer_ids].map(&:to_i) if params[:checked_answer_ids].present?
-      @test_passage.answer_ids.uniq!
-      @test_passage.current_question = @test_passage.previous_question
-    when 'Next'
-      @test_passage.answer_ids -= params[:answer_ids].map(&:to_i)
-      @test_passage.answer_ids += params[:checked_answer_ids].map(&:to_i) if params[:checked_answer_ids].present?
-      @test_passage.answer_ids.uniq!
-      @test_passage.current_question = @test_passage.next_question
-    when 'Finish'
-      @test_passage.answer_ids -= params[:answer_ids].map(&:to_i)
-      @test_passage.answer_ids += params[:checked_answer_ids].map(&:to_i) if params[:checked_answer_ids].present?
-      @test_passage.answer_ids.uniq!
-    end
-    @test_passage.save
-    if params[:commit] == 'Finish'
-      redirect_to user_tests_path(user_id: @current_user.id)
+    @test_passage.accept!(test_passage_params[:answer][:ids])
+    
+    if @test_passage.current_question.last?
+      redirect_to user_tests_path(user_id: @current_user.id)      
     else
-      redirect_to @test_passage
+      @test_passage.set_next_question!
+      redirect_to test_passage_path(@test_passage)
     end
   end
   
   private
+  
+  def test_passage_params
+    params.permit(:answer => {:ids => []})
+  end
   
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
