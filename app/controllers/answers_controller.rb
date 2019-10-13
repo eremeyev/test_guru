@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = @question.answers.new(answer_params(params))
+    @answer = @question.answers.new(answer_params)
     if @answer.save
       flash[:notice] = "Created."
       redirect_to question_path(@question)
@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
   end
   
   def update
-    if @answer.update(answer_params(params))
+    if @answer.update(answer_params)
       flash[:notice] = "Updated."
       redirect_to question_path(@question)
     else
@@ -45,8 +45,8 @@ class AnswersController < ApplicationController
 
   private
   
-  def answer_params(params)
-    params.require(:answer).permit(:body, :correct, :user_id)
+  def answer_params
+    params.require(:answer).permit(:body, :correct)
   end
   
   def set_answer

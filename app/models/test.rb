@@ -18,8 +18,8 @@ class Test < ApplicationRecord
   end
   
   def percents_of_success(user)
-    correct_chosen_answers = correct_answers.ids - (correct_answers.ids - answer_ids(user))
-    correct_percents = 100.0 / correct_answers.size * correct_chosen_answers.size
+    test_passage = test_passages.find_by(user_id: user.id)
+    correct_percents = 100.0 / correct_answers.size * test_passage.correct_questions
     return correct_percents.round(0) if correct_answers.present?
     0
   end

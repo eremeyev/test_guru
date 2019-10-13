@@ -1,6 +1,5 @@
 class Answer < ApplicationRecord
   belongs_to :question
-  belongs_to :user
   scope :right, -> { where(correct: true) }
   validate :answers_qty_can_not_be_more_than_4_for_one_question, on: :create
   validates :body, presence: true
