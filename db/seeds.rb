@@ -29,7 +29,7 @@ if u.blank?
   u.save
   users << u
 end
-  
+
 puts "-- Create My Tests"
 tests = []
 tests << Test.find_or_create_by(title: "Rails", level: 0, category_id: categories[0].id, author_id: users[0].id)
