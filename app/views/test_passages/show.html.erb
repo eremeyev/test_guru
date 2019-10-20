@@ -1,0 +1,18 @@
+<%= content_tag :h1, "Pass the test '#{@test_passage.test.title}'" %><br/>
+Question
+<%= @test_passage.current_question.number %>
+(<%= @test_passage.questions.count %>).
+<%= content_tag :strong, @test_passage.current_question.body %>
+<% if @test_passage.current_question.answers %>
+  <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |f| %>
+    <%= f.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body do |b| %>
+      <p>
+        <% checked = (@test_passage.answer_ids || []).include?(b.object.id) %>
+        <%= b.check_box id: "answer_id_#{b.object.id}", name: "answer[ids][]" %>
+        <%= b.label %>
+      </p>
+    <% end %>
+    <%= f.submit "Next", disabled: @test_passage.current_question.last? %>
+    <%= f.submit "Finish", disabled: !@test_passage.current_question.last? %>
+  <% end %>
+<% end %>
