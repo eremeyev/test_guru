@@ -18,6 +18,7 @@
   border-top: 1px solid black;
   background: lightgrey;
   margin-top: 1em;
+  height: 2.5em;
   padding: 0.5em 1em;
 }
 
@@ -29,7 +30,8 @@
   border-bottom: 1px solid black;
   background: lightgrey;
   margin-top: 3em;
-  padding: 0.5em 1em;
+  height: 1.5em;
+  padding: 0.8em 1em 0.4em;
 }
 
 div.field_with_errors label{
@@ -37,3 +39,26 @@ div.field_with_errors label{
   height: 1em;
 }
 
+.greating{
+  text-align: right;
+  width: auto;
+  font-size: 110%;
+}
+.nav{
+  text-align: right;
+  float: left;
+  width: auto;
+  clear: both;
+}
+.logo a{
+  text-align: right;
+  float: left;
+  width: auto;
+  text-decoration: none;
+  font-size: 120%;
+  font-weight: 600;
+}
+.signup, .login, .logout{
+  float: right;
+  width: auto;
+}
