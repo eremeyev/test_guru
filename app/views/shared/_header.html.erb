@@ -1,0 +1,5 @@
+<div class="header">
+  <%= content_tag :h3, flash[:notice], style: "color:green;" if flash[:notice].present? %>
+  Welcome, <%= @current_user.id %>!<br/>
+  <%= nav %>
+</div>

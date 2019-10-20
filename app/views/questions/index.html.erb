@@ -1,0 +1,12 @@
+<%= content_tag :h1, "Questions for Test ID:#{@test.id}. #{@test.title}:" %>
+<%= link_to "Create new question", new_test_question_path(test_id: @test.id) %>
+<br/><br/>
+<table>
+  <tr>
+    <th>Num</th>
+    <th>Text</th>
+    <th>Answers qty</th>
+    <th colspan="3">Actions</th>
+  </tr>
+  <%= render @questions %>
+</table>
