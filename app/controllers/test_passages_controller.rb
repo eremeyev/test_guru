@@ -1,4 +1,5 @@
 class TestPassagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update]
   
   def index
@@ -22,6 +23,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(test_passage_params[:answer][:ids])
     
     if @test_passage.current_question.last?
+      TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to user_tests_path(user_id: @current_user.id)      
     else
       @test_passage.set_next_question!

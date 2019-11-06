@@ -1,4 +1,4 @@
-<%= form_for [@test, @question] do |f| %>
+<%= form_for [:admin, @test, @question] do |f| %>
   <%= f.text_area :body %>
   <%= render 'answers', locals: {f: f} if @question.persisted? %>
   <%= f.submit %>

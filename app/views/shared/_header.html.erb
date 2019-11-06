@@ -1,7 +1,7 @@
 <div class="header">
   <%= logo %>
   <%= display_flash %>
-  <% if logged_in? %>
+  <% if user_signed_in? %>
     <%= nav %>
     <%= greating + logout %>
   <% else %>

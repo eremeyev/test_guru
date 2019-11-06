@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::BaseController
   before_action :set_test, only: %i[new create index destroy]
   before_action :set_question, only: %i[show edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
     @question = @test.questions.new(question_params)
     if @question.save
       flash[:notice] = "Created successfuly!"
-      redirect_to test_questions_path(test_id: @test.id)
+      redirect_to admin_test_questions_path(test_id: @test.id)
     else
       render inline: "Not saved. Test: #{@test.title}</br>Question: #{@question.body}" 
     end
@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
   
   def update
     if @question.update(question_params)
-      redirect_to test_questions_path(test_id: @question.test.id)
+      redirect_to admin_test_questions_path(test_id: @question.test.id)
     else
       flash[:notice] = @question.errors.full_messages.join(' ')
       render :edit
@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
   def  destroy
     if @question.destroy
       flash[:notice] = "Deleted successfuly!"
-      redirect_to test_questions_path(test_id: @test.id)
+      redirect_to admin_test_questions_path(test_id: @test.id)
     else
       render inline: "Not Deleted." 
     end
@@ -62,6 +62,6 @@ class QuestionsController < ApplicationController
   
   def rescue_with_question_not_found
     flash[:notice] = "Question not found"
-    redirect_to test_questions_path(@question)
+    redirect_to admin_test_questions_path(@question)
   end
 end
