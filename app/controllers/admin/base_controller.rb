@@ -5,6 +5,8 @@ class Admin::BaseController < ApplicationController
   private
   
   def admin_required!
-    redirect_to root_path, alert: "You are not authorized to see page #{url_for(params.permit)}. You has been redirected to page 'About'" unless current_user.is_a?(Admin)
+    alert = "You are not authorized to see page #{url_for(params.permit)}. 
+            You has been redirected to page 'About'"
+    redirect_to root_path, alert: alert unless current_user.admin?
   end
 end
