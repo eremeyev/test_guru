@@ -1,4 +1,5 @@
-class AnswersController < ApplicationController
+class Admin::AnswersController < Admin::BaseController
+
   before_action :set_question, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_answer, only: [:edit, :update, :destroy]
   
@@ -6,14 +7,14 @@ class AnswersController < ApplicationController
   end
   
   def new
-    @answer = @question.answers.new(user_id: @current_user.id)
+    @answer = @question.answers.new
   end
 
   def create
     @answer = @question.answers.new(answer_params)
     if @answer.save
       flash[:notice] = "Created."
-      redirect_to question_path(@question)
+      redirect_to admin_question_path(@question)
     else 
       flash[:notice] = @answer.errors.full_messages.join(' ')
       render :action => :new
@@ -23,7 +24,7 @@ class AnswersController < ApplicationController
   def update
     if @answer.update(answer_params)
       flash[:notice] = "Updated."
-      redirect_to question_path(@question)
+      redirect_to admin_question_path(@question)
     else
       flash[:notice] = @answer.errors.full_messages.join(' ')
       render :action => :edit
@@ -37,7 +38,7 @@ class AnswersController < ApplicationController
   def  destroy
     if @answer.destroy
       flash[:notice] = "Deleted successfuly!"
-      redirect_to edit_question_path(@question)
+      redirect_to edit_admin_question_path(@question)
     else
       render inline: "Not Deleted." 
     end

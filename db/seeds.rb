@@ -15,8 +15,20 @@ categories << Category.find_or_create_by(title: 'Operating systems')
 
 puts "-- Create Users"
 users = []
-users << User.find_or_create_by(login: 'john_doe', password: '123456', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
-users << User.find_or_create_by(login: 'foo_bar', password: '123456', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
+u = User.find_by(email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe', confirmed_at: Time.now)
+if u.blank?
+  u = User.new(login: 'john', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
+  u.password = '123456'
+  u.save
+  users << u
+end
+u = User.find_by(email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar', confirmed_at: Time.now)
+if u.blank?
+  u = User.new(login: 'foo', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
+  u.password = '123456'
+  u.save
+  users << u
+end
 
 puts "-- Create My Tests"
 tests = []
