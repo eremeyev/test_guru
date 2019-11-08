@@ -35,3 +35,85 @@ en:
   info: 'Application for course of Thinknetica "Ruby on Rails Basics".'
   description: 'Desctiption: Quiz Application. Create and issue tickets with questions.'
   author: 'Author: Andrey Eremeev.'
+
+  helpers:
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Test"
+      question:
+        create: "Create Question"
+        update: "Update Question"
+      answer:
+        create: "Create Answer"
+        update: "Update Answer"
+
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+    select:
+      prompt: "- Select one please -"
+    
+  test_passages:
+    show: 
+      title: "Pass the test '%{test_title}'"
+      question: "Question"
+      next: "Next"
+      finish: "Finish"
+  
+  tests:
+    index:
+      title: "Tests"
+      number: "Number"
+      text: "Text"
+      progress: "Progress"
+    test:
+      start: "Start"
+      fail_message: "Failed. %{percents}%"
+      success_message: "Success. %{percents}%"
+      no_questions_message: "No questions. Can't start test. Add questions."
+
+  admin:
+    test:
+      title: "Test: %{title}"
+    tests:
+      success: "Test successfuly created."
+      index:
+        title: "Tests"
+        create_new_test: "Create new test"
+        number: "Number"
+        text: "Text"
+        questions_qty: "Questions qty"
+        actions: "Actions"
+      new:
+        title: "Create new test"
+      test:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+      show:
+        title: "Questions"
+        number: "Number"
+        text: "Text"
+        actions: "Actions"
+    questions:
+      question:
+        edit: "Edit"
+        delete: "Delete"
+      answers:
+        title: "Answers"
+        add_new_answer: "Add new answer"
+        number: "Number"
+        text: "Text"
+        correct: "Correct"
+        actions: "Actions"
+        edit: "Edit"
+        delete: "Delete"
+    answers:
+      edit:
+        question_body: "Question: %{body}"
+        body: "Body"
+        is_correct: "Is Correct"
+

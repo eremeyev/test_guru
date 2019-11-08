@@ -1,20 +1,20 @@
-<%= content_tag :h3, 'Answers' %>
-<%= link_to 'Add new answer', new_admin_question_answer_path(question_id: @question.id) if @question %>
+<%= content_tag :h3, t('.title') %>
+<%= link_to t('.add_new_answer'), new_admin_question_answer_path(question_id: @question.id) if @question %>
 <table>
   <tr>
-    <th>Number</th>
-    <th>Correct</th>
-    <th>Text</th>
-    <th>Actions</th>
+    <th><%= t('.number') %></th>
+    <th><%= t('.correct') %></th>
+    <th><%= t('.text') %></th>
+    <th><%= t('.actions') %></th>
   </tr>
   <% @question.answers.each.with_index(1) do |answer, answer_index| %>
     <tr>
       <td><%= answer_index %></td>
       <td><%= answer.correct ? "Yes" : "No" %></td>
       <td><%= answer.body %></td>
-      <td><%= link_to 'Edit', edit_admin_answer_path(id: answer.id, question_id: @question.id) %></td>
+      <td><%= link_to t('.edit'), edit_admin_answer_path(id: answer.id, question_id: @question.id) %></td>
       <td>
-        <%= button_to "Delete", admin_answer_path(id: answer.id, question_id: @question.id), method: :delete, data: {confirm: "Вы уверены?"} %>
+        <%= button_to t(".delete"), admin_answer_path(id: answer.id, question_id: @question.id), method: :delete, data: {confirm: "Вы уверены?"} %>
       </td>
   <% end %>
 </table>

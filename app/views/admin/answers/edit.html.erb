@@ -1,9 +1,9 @@
-<%= content_tag :h2, "Test: #{@question.test.title}" %>
-<%= content_tag :p, "Qestion: #{@question.body}" %>
-<%= form_for @answer do |f| %>
+<%= content_tag :h2, t('admin.test.title', title: @question.test.title ) %>
+<%= content_tag :p, t('.question_body', body: @question.body) %>
+<%= form_for [:admin, @answer] do |f| %>
   <%= hidden_field_tag :question_id, @answer.question_id %><br/>
-  Body: <%= f.text_field :body %><br/>
-  Is correct: <%= f.check_box :correct %>
+  <%= t('.body') %>: <%= f.text_field :body %><br/>
+  <%= t('.is_correct') %>: <%= f.check_box :correct %>
   <br/>
   <%= f.submit %>
 <% end %>

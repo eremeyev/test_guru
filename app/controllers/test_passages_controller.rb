@@ -3,7 +3,7 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update]
   
   def index
-    @test_passages = @current_user.test_passages
+    @test_passages = current_user.test_passages
   end
   
   def show
@@ -24,7 +24,7 @@ class TestPassagesController < ApplicationController
     
     if @test_passage.current_question.last?
       TestsMailer.completed_test(@test_passage).deliver_now
-      redirect_to user_tests_path(user_id: @current_user.id)      
+      redirect_to tests_path
     else
       @test_passage.set_next_question!
       redirect_to test_passage_path(@test_passage)

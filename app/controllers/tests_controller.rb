@@ -19,6 +19,6 @@ class TestsController < ApplicationController
   end
   
   def set_tests
-    @tests = current_user.tests
+    @tests = Test.all #current_user.tests
   end
 end

@@ -1,5 +1,5 @@
-<%= content_tag :h1, "Pass the test '#{@test_passage.test.title}'" %><br/>
-Question
+<%= content_tag :h1, t('.title', test_title: @test_passage.test.title) %><br/>
+<%= t('.question') %>
 <%= @test_passage.current_question.number %>
 (<%= @test_passage.questions.count %>).
 <%= content_tag :strong, @test_passage.current_question.body %>
@@ -12,7 +12,7 @@ Question
         <%= b.label %>
       </p>
     <% end %>
-    <%= f.submit "Next", disabled: @test_passage.current_question.last? %>
-    <%= f.submit "Finish", disabled: !@test_passage.current_question.last? %>
+    <%= f.submit t('.next'), disabled: @test_passage.current_question.last? %>
+    <%= f.submit t('.finish'), disabled: !@test_passage.current_question.last? %>
   <% end %>
 <% end %>

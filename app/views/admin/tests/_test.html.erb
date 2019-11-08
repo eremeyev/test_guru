@@ -9,12 +9,12 @@
     <%= link_to test.questions.count, admin_test_questions_path(test_id: test) %>
   </td>
   <td>
-    <%= link_to 'Show', admin_test_path(test) %>
+    <%= link_to t('.show'), admin_test_path(test) %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_admin_test_path(test) %>
+    <%= link_to t('.edit'), edit_admin_test_path(test) %>
   </td>
   <td>
-    <%= button_to "Delete", admin_test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
+    <%= button_to t('.delete'), admin_test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
   </td>
 </tr>
