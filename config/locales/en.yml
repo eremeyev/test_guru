@@ -35,6 +35,11 @@ en:
   info: 'Application for course of Thinknetica "Ruby on Rails Basics".'
   description: 'Desctiption: Quiz Application. Create and issue tickets with questions.'
   author: 'Author: Andrey Eremeev.'
+  alert_if_admin_required: "You are not authorized to see page this page. You has been redirected to page 'About'"
+  welcome: "Welcome, %{name}!"
+  login: 'Login' 
+  logout: 'Logout' 
+  sign_up: 'Sign up' 
 
   helpers:
     submit:
@@ -55,7 +60,7 @@ en:
         category_id: "Category"
     select:
       prompt: "- Select one please -"
-    
+  
   test_passages:
     show: 
       title: "Pass the test '%{test_title}'"

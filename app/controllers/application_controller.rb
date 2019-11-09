@@ -10,12 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    return { locale: I18n.locale } if params[:locale] != I18n.default_locale.to_s
-    {}
+    params[:locale] != I18n.default_locale.to_s ? { locale: I18n.locale } : {}   
   end
   
   def after_sign_in_path_for(user)
-    return admin_tests_path if current_user.admin?
-    root_path
+    current_user.admin? ? admin_tests_path : root_path
   end
 end

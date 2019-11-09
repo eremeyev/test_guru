@@ -17,7 +17,7 @@ module ApplicationHelper
   
   def logo
     content_tag :div, (
-      link_to "Test GURU", root_path
+      link_to t('title'), root_path
     ),
     class: "logo"
   end
@@ -30,35 +30,35 @@ module ApplicationHelper
   
   def greating
     content_tag :div, (
-      content_tag :span, "Welcome, #{current_user.email}!", class: "greating"
+      content_tag :span, t('welcome', name: current_user.first_name), class: "greating"
     ),
     class: "greating"
   end
   
   def login
     content_tag :div, (
-      button_to "Login", new_user_session_path, method: :get
+      link_to t("login"), new_user_session_path, method: :get
     ),
     class: 'login'
   end
   
   def logout
     content_tag :div, (
-      button_to "Logout", destroy_user_session_path, method: :delete
+      link_to t("logout"), destroy_user_session_path, method: :delete
     ),
     class: 'logout'
   end
   
   def nav
     content_tag :div, (
-      link_to_unless_current "Tests", tests_path(user_id: current_user.id)
+      link_to_unless_current t("Tests"), tests_path(user_id: current_user.id)
     ),
     class: 'nav'
   end
   
   def signup
     content_tag :div, (
-      button_to "Sign up", new_user_registration_path, method: :get
+      link_to t('sign_up'), new_user_registration_path, method: :get
     ),
     class: 'signup'
   end  
