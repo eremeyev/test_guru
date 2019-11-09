@@ -1,11 +1,11 @@
-<%= content_tag :h1, "Tests:" %>
+<%= content_tag :h1, t('.title') %>
 <br/><br/>
 <table>
   <tr>
-    <th>Num</th>
-    <th>Text</th>
-    <th>Questions qty</th>
-    <th>Progress</th>
+    <th><%= t('.number') %></th>
+    <th><%= t('.text') %></th>
+    <th><%= t('.questions_qty') %></th>
+    <th><%= t('.progress') %></th>
   </tr>
   <%= render @tests %>
 </table>

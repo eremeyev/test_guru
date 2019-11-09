@@ -9,9 +9,9 @@
     <%= question.answers.size %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_admin_question_path(question) %>
+    <%= link_to t('.edit'), edit_admin_question_path(question) %>
   </td>
   <td>
-    <%= button_to "Delete", admin_question_path(test_id: @test.id, id: question.id), method: :delete, data: {confirm: "Вы уверены?"} %>
+    <%= button_to t('.delete'), admin_question_path(test_id: @test.id, id: question.id), method: :delete, data: {confirm: "Вы уверены?"} %>
   </td>
 </tr>

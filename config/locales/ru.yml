@@ -31,7 +31,102 @@
 
 ru:
   hello: "Привет, Мир!"
-  title: 'Заголовок: Test-Guru'
+  title: "Тест ГУРУ"
   info: 'Приложение для курса Thinknetica "Основы Ruby on Rails"'
-  description: 'Описание: Приложение для опросов. Создание и выдача билетов с вопросами.'
-  author: 'Автор: Андрей Еремеев.'
+  description: 'Приложение для опросов. Создание и выдача билетов с вопросами.'
+  author: 'Андрей Еремеев.'
+  alert_if_admin_required: "У вас нет прав для просмотра страницы. Вы перенаправлены на страницу 'О нас'"
+  welcome: "Добро пожаловать, %{name}!"
+  login: 'Войти' 
+  logout: 'Выйти' 
+  sign_up: 'Регистрация' 
+  
+  helpers:
+    submit:
+      test:
+        create: "Создать Тест"
+        update: "Обновить Тест"
+      question:
+        create: "Создать Вопрос"
+        update: "Обновить Вопрос"
+      answer:
+        create: "Создать Ответ"
+        update: "Обновить Ответ"
+      test_passages:
+        show:
+          next: "Следующий"
+          finish: "Закончить"
+        
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category: "Категория"
+    select:
+      prompt: "- Выберите один вариант -"
+  
+  test_passages:
+    result:
+      header: "Тест %{title} успешно завершен!"
+    show: 
+      title: "Пройдите тест '%{test_title}'"
+      question: "Вопрос"
+      next: "Следующий"
+      finish: "Закончить"
+
+  tests:
+    index:
+      title: "Тесты"
+      number: "Номер"
+      text: "Текст"
+      questions_qty: "Кол-во вопросов"
+      progress: "Прогресс"
+    test:
+      start: "Старт"
+      fail_message: "Провально. %{percents}%"
+      success_message: "Успешно. %{percents}%"
+      no_questions_message: "Нет вопросов. Невозможно начать тест. Добавьте вопросы."
+
+  admin:
+    test:
+      title: "Тест: %{title}"
+    tests:
+      success: "Тест успешнь создан"
+      index:
+        title: "Тесты"
+        create_new_test: "Создать новый тест"
+        number: "Номер"
+        text: "Текст"
+        questions_qty: "Кол-во вопросов"
+        actions: "Действия"
+      new:
+        title: "Создание нового теста"
+      test:
+        show: "Показать"
+        edit: "Редактировать"
+        delete: "Удалить"
+      show:
+        title: "Вопросы"
+        number: "Номер"
+        text: "Текст"
+        actions: "Действия"
+    questions:
+      question:
+        edit: "Редактировать"
+        delete: "Удалить"
+      answers:
+        title: "Ответы"
+        add_new_answer: "Добавить новый ответ"
+        number: "Номер"
+        text: "Текст"
+        correct: "Верный ответ"
+        actions: "Действия"
+        edit: "Редактировать"
+        delete: "Удалить"
+    answers:
+      edit:
+        question_body: "Вопрос: %{body}"
+        body: "Текст ответа"
+        is_correct: "Правильность"
+        
+
