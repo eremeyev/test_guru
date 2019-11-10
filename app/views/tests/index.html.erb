@@ -1,11 +1,12 @@
 <%= content_tag :h1, t('.title') %>
 <br/><br/>
-<table>
+<table class='table table-bordered'>
   <tr>
     <th><%= t('.number') %></th>
     <th><%= t('.text') %></th>
     <th><%= t('.questions_qty') %></th>
     <th><%= t('.progress') %></th>
+    <th><%= t('.actions') %></th>
   </tr>
   <%= render @tests %>
 </table>

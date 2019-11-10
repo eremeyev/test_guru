@@ -5,5 +5,5 @@
   <%= f.number_field :level %><br/><br/>
   <%= f.label :category %>:<br/>
   <%= f.collection_select :category_id, Category.all, :id, :title, {prompt: true}, {id: 'test_category'} %><br/><br/>
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

@@ -2,7 +2,7 @@
 <%= link_to t('.create_new_test'), new_admin_test_path(id: current_user.id) %>
 <br/><br/>
 <% if @tests.present? %>
-  <table>
+  <table class='table table-bordered'>
     <tr>
       <th><%= t('.number') %></th>
       <th><%= t('.text') %></th>

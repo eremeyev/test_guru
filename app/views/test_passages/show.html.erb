@@ -1,18 +1,24 @@
 <%= content_tag :h1, t('.title', test_title: @test_passage.test.title) %><br/>
-<%= t('.question') %>
-<%= @test_passage.current_question.number %>
-(<%= @test_passage.questions.count %>).
-<%= content_tag :strong, @test_passage.current_question.body %>
+<h2>
+  <%= t('.question') %>
+  <%= @test_passage.current_question.number %>
+  (<%= @test_passage.questions.count %>).
+  <%= content_tag :strong, @test_passage.current_question.body %>
+</h2>
 <% if @test_passage.current_question.answers %>
   <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |f| %>
-    <%= f.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body do |b| %>
-      <p>
-        <% checked = (@test_passage.answer_ids || []).include?(b.object.id) %>
-        <%= b.check_box id: "answer_id_#{b.object.id}", name: "answer[ids][]" %>
-        <%= b.label %>
-      </p>
-    <% end %>
-    <%= f.submit t('.next'), disabled: @test_passage.current_question.last? %>
-    <%= f.submit t('.finish'), disabled: !@test_passage.current_question.last? %>
+    <div class='form-group'>
+      <%= f.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body do |b| %>
+        <p class='form-check'>
+          <%= b.label class: 'form-check-label' do %>
+            <%= b.check_box id: "answer_id_#{b.object.id}", name: "answer[ids][]" %>
+            <%= b.object.body %>
+          <% end %>
+        </p>
+
+      <% end %>
+      <%= f.submit t('.next'), disabled: @test_passage.current_question.last?, class: 'btn btn-primary' %>
+      <%= f.submit t('.finish'), disabled: !@test_passage.current_question.last?, class: 'btn btn-primary' %>
+    </div>
   <% end %>
 <% end %>

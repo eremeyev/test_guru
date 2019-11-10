@@ -20,7 +20,7 @@ class TestPassagesController < ApplicationController
   end
   
   def update
-    @test_passage.accept!(test_passage_params[:answer][:ids])
+    @test_passage.accept!(test_passage_params[:answer][:ids]) if test_passage_params[:answer].present?
     
     if @test_passage.current_question.last?
       TestsMailer.completed_test(@test_passage).deliver_now
