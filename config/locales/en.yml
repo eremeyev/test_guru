@@ -31,11 +31,11 @@
 
 en:
   hello: 'Hello world'
-  title: 'Title: Test-Guru'
+  title: 'Test-Guru'
   info: 'Application for course of Thinknetica "Ruby on Rails Basics".'
   description: 'Desctiption: Quiz Application. Create and issue tickets with questions.'
   author: 'Author: Andrey Eremeev.'
-  alert_if_admin_required: "You are not authorized to see page this page. You has been redirected to page 'About'"
+  alert_if_admin_required: "You are not authorized to see requested page."
   welcome: "Welcome, %{name}!"
   login: 'Login' 
   logout: 'Logout' 
@@ -67,6 +67,9 @@ en:
       question: "Question"
       next: "Next"
       finish: "Finish"
+    gist:
+      success: "Success"
+      failure: "Failure"
   
   tests:
     index:

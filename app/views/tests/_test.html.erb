@@ -12,7 +12,7 @@
     <%= progress_message(test, current_user) %>
   </td>
   <td>
-    <%= button_to t('.start'), start_test_path(test) if test.questions.present? %>
+    <%= button_to t('.start'), start_test_path(test), class: 'btn btn-primary' if test.questions.present? %>
     <%= t('.no_questions_message') if test.questions.blank? %>
   </td>
 </tr>

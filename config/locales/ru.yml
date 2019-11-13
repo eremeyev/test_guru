@@ -35,7 +35,7 @@ ru:
   info: 'Приложение для курса Thinknetica "Основы Ruby on Rails"'
   description: 'Приложение для опросов. Создание и выдача билетов с вопросами.'
   author: 'Андрей Еремеев.'
-  alert_if_admin_required: "У вас нет прав для просмотра страницы. Вы перенаправлены на страницу 'О нас'"
+  alert_if_admin_required: "У вас нет прав для просмотра страницы."
   welcome: "Добро пожаловать, %{name}!"
   login: 'Войти' 
   logout: 'Выйти' 
@@ -73,6 +73,9 @@ ru:
       question: "Вопрос"
       next: "Следующий"
       finish: "Закончить"
+    gist:
+      success: "Успех"
+      failure: "Провал"
 
   tests:
     index:
@@ -91,7 +94,7 @@ ru:
     test:
       title: "Тест: %{title}"
     tests:
-      success: "Тест успешнь создан"
+      success: "Тест успешно создан"
       index:
         title: "Тесты"
         create_new_test: "Создать новый тест"
