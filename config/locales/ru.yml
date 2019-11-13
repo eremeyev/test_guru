@@ -73,6 +73,9 @@ ru:
       question: "Вопрос"
       next: "Следующий"
       finish: "Закончить"
+    gist:
+      success: "Успех"
+      failure: "Провал"
 
   tests:
     index:
@@ -91,7 +94,7 @@ ru:
     test:
       title: "Тест: %{title}"
     tests:
-      success: "Тест успешнь создан"
+      success: "Тест успешно создан"
       index:
         title: "Тесты"
         create_new_test: "Создать новый тест"

@@ -67,6 +67,9 @@ en:
       question: "Question"
       next: "Next"
       finish: "Finish"
+    gist:
+      success: "Success"
+      failure: "Failure"
   
   tests:
     index:
