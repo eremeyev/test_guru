@@ -61,7 +61,7 @@ en:
         category_id: "Category"
     select:
       prompt: "- Select one please -"
-  
+
   test_passages:
     show: 
       title: "Pass the test '%{test_title}'"
@@ -125,4 +125,10 @@ en:
         question_body: "Question: %{body}"
         body: "Body"
         is_correct: "Is Correct"
+    gists:
+      index:
+        number: "Number"
+        question: "Question"
+        qist_url: "Gist URL"
+        user_email: "User's email"
 

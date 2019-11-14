@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
+    resources :gists
     resources :tests do
       resources :questions, shallow: true, only: %i[index new create edit show update destroy] do
         resources :answers, shallow: true, only: %i[index new create edit show update destroy]

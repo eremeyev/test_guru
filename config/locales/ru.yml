@@ -64,7 +64,7 @@ ru:
         category: "Категория"
     select:
       prompt: "- Выберите один вариант -"
-  
+
   test_passages:
     result:
       header: "Тест %{title} успешно завершен!"
@@ -132,5 +132,12 @@ ru:
         question_body: "Вопрос: %{body}"
         body: "Текст ответа"
         is_correct: "Правильность"
-        
+    gists:
+      index:
+        number: "Номер"
+        question: "Вопрос"
+        qist_url: "Ссылка на Gist"
+        user_email: "Электропочта пользователя"
+
+
 

@@ -32,7 +32,7 @@ module ApplicationHelper
   end
   
   def nav
-    link_to_unless_current t("Tests"), tests_path(user_id: current_user.id)
+    link_to_unless_current t(".tests"), tests_path(user_id: current_user.id)
   end
   
   def signup
