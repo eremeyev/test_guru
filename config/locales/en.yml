@@ -40,6 +40,7 @@ en:
   login: 'Login' 
   logout: 'Logout' 
   sign_up: 'Sign up' 
+  gist_question: 'Gist Question'
 
   helpers:
     submit:
@@ -68,7 +69,7 @@ en:
       next: "Next"
       finish: "Finish"
     gist:
-      success: "Success"
+      success: "Success! Click <a href='%{gist_url}'>here</a> to see gist on GitHub."
       failure: "Failure"
   
   tests:

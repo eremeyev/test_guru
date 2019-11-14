@@ -39,8 +39,8 @@ ru:
   welcome: "Добро пожаловать, %{name}!"
   login: 'Войти' 
   logout: 'Выйти' 
-  sign_up: 'Регистрация' 
-  
+  sign_up: 'Регистрация'
+
   helpers:
     submit:
       test:
@@ -73,8 +73,9 @@ ru:
       question: "Вопрос"
       next: "Следующий"
       finish: "Закончить"
+      gist_question: 'Gist Вопрос'
     gist:
-      success: "Успех"
+      success: "Успешно! Чтобы увидеть созданный gist на GitHub перейдите по <a href='%{gist_url}'>этой ссылке</a>."
       failure: "Провал"
 
   tests:
