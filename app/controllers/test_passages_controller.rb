@@ -33,14 +33,12 @@ class TestPassagesController < ApplicationController
   
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
-    
-    flash_options = if result.success?
-      { notice: t('.success') }
+    if result.created_at.present?
+      flash_options = { notice: "Success! Click <a href='https://gist.github.com/#{result.owner.login}/#{result.id}'>here</a> to see gist on GitHub." }
     else
-      { notice: t('.failure') }
+      flash_options = { notice: t('.failure') }
     end
-    
-    redirect_to @test_passage, flash_options
+    redirect_to test_passage_path(id: @test_passage.id), flash_options
   end
   
   private

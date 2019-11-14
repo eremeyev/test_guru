@@ -3,7 +3,6 @@
   <%= greating + logout %>
 </div>
 <div class='navbar navbar-dark bg-dark'>
-  <%= display_flash %>
   <span class='navbar-text'>
     <% if user_signed_in? %>
       <%= nav %>
@@ -14,3 +13,4 @@
     <% end %>
   </span>
 </div>
+<%= render partial: 'shared/flash' %>
