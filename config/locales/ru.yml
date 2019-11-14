@@ -91,6 +91,12 @@ ru:
       success_message: "Успешно. %{percents}%"
       no_questions_message: "Нет вопросов. Невозможно начать тест. Добавьте вопросы."
 
+  shared:
+    header:
+      manage_tests: "Управление Тестами"
+      tests: "Тесты"
+      gists: "Просмотр Гистов"
+  
   admin:
     test:
       title: "Тест: %{title}"

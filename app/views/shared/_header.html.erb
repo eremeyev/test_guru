@@ -6,7 +6,7 @@
   <span class='navbar-text'>
     <% if user_signed_in? %>
       <%= nav %> |
-      <%= link_to_unless_current t('.admin_panel'), admin_tests_path if current_user.admin? %> |
+      <%= link_to_unless_current t('.manage_tests'), admin_tests_path if current_user.admin? %> |
       <%= link_to_unless_current t(".gists"), admin_gists_path if current_user.admin? %>
     <% else %>
       <%= signup %> |

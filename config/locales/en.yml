@@ -83,6 +83,12 @@ en:
       fail_message: "Failed. %{percents}%"
       success_message: "Success. %{percents}%"
       no_questions_message: "No questions. Can't start test. Add questions."
+      
+  shared:
+    header:
+      manage_tests: "Manage Tests"
+      tests: "Tests"
+      gists: "Gists"
 
   admin:
     test:

@@ -32,15 +32,15 @@ class TestPassagesController < ApplicationController
   end
   
   def gist
-#    result = GistQuestionService.new(@test_passage.current_question).call
-#    if result.created_at.present?
-    if true
-#      gist_url = "https://gist.github.com/#{result.owner.login}/#{result.id}"
-      gist_url = "https://gist.github.com/azazelo/id"
+    result = GistQuestionService.new(@test_passage.current_question).call
+    if result.created_at.present?
+#    if true
+      gist_url = "https://gist.github.com/#{result.owner.login}/#{result.id}"
+#      gist_url = "https://gist.github.com/azazelo/id"
       gist = current_user.gists.find_or_create_by(url: gist_url)
       gist.update(question_id: @test_passage.current_question.id)
-#      flash_options = { notice: t('.success', gist_url: "https://gist.github.com/#{result.owner.login}/#{result.id}") }
-      flash_options = { notice: t('.success') }
+      flash_options = { notice: t('.success', gist_url: "https://gist.github.com/#{result.owner.login}/#{result.id}") }
+#      flash_options = { notice: t('.success') }
     else
       flash_options = { notice: t('.failure') }
     end
