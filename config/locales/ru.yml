@@ -106,7 +106,7 @@ ru:
         title: "Тесты"
         create_new_test: "Создать новый тест"
         number: "Номер"
-        text: "Текст"
+        test_title: "Название"
         questions_qty: "Кол-во вопросов"
         actions: "Действия"
       new:

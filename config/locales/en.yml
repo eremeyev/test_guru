@@ -99,7 +99,7 @@ en:
         title: "Tests"
         create_new_test: "Create new test"
         number: "Number"
-        text: "Text"
+        test_title: "Test Ttile"
         questions_qty: "Questions qty"
         actions: "Actions"
       new:

@@ -1,6 +1,6 @@
 <div class='navbar-brand'>
   <%= logo %>
-  <%= greating + logout %>
+  <%= greating + logout if user_signed_in?%>
 </div>
 <div class='navbar navbar-dark bg-dark'>
   <span class='navbar-text'>
