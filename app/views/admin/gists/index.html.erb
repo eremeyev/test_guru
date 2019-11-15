@@ -1,0 +1,16 @@
+<%= content_tag :h1, t('.title') %>
+<br/><br/>
+<% if @gists.present? %>
+  <table class='table table-bordered'>
+    <tr>
+      <th><%= t('.number') %></th>
+      <th><%= t('.question') %></th>
+      <th><%= t('.qist_url') %></th>
+      <th><%= t('.user_email') %></th>
+    </tr>
+    <%= render @gists %>
+  </table>
+<% else %>
+  <%= t('.no_gists_yet') %>
+  There is no gists created yet.
+<% end %>

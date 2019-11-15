@@ -88,6 +88,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
     faraday (0.17.0)
@@ -131,6 +135,11 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
+    octicons (9.2.0)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (9.2.0)
+      octicons (= 9.2.0)
+      rails
     octokit (4.14.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     orm_adapter (0.5.0)
@@ -245,11 +254,13 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.0)
+  dotenv-rails
   faraday
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  octicons_helper
   octokit (~> 4.0)
   pry-remote
   puma (~> 3.11)

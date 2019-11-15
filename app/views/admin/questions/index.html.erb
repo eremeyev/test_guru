@@ -1,7 +1,7 @@
 <%= content_tag :h1, "Questions for Test ID:#{@test.id}. #{@test.title}:" %>
 <%= link_to "Create new question", new_admin_test_question_path(test_id: @test.id) %>
 <br/><br/>
-<table>
+<table class="table table-bordered">
   <tr>
     <th>Num</th>
     <th>Text</th>

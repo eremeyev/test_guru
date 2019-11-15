@@ -19,12 +19,6 @@ module ApplicationHelper
     link_to t('title'), root_path, class: 'navbar-brand'
   end
   
-  def display_flash
-    flash.map do |k, v|
-      (content_tag :h3, v, class: "alert alert-success flash.#{k}")
-    end.join(' ').html_safe if flash.present?
-  end
-  
   def greating
     content_tag :span, t('welcome', name: current_user.first_name), class: "greating"
   end
@@ -38,7 +32,7 @@ module ApplicationHelper
   end
   
   def nav
-    link_to_unless_current t("Tests"), tests_path(user_id: current_user.id)
+    link_to_unless_current t(".tests"), tests_path(user_id: current_user.id)
   end
   
   def signup
