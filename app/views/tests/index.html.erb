@@ -3,7 +3,11 @@
 <table class='table table-bordered'>
   <tr>
     <th><%= t('.number') %></th>
-    <th><%= t('.text') %></th>
+    <th class="sort-by-title pointer">
+        <%= t('.test_title') %>
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
     <th><%= t('.questions_qty') %></th>
     <th><%= t('.progress') %></th>
     <th><%= t('.actions') %></th>
