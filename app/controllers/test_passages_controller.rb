@@ -15,10 +15,6 @@ class TestPassagesController < ApplicationController
       end
   end
   
-  def result
-    
-  end
-  
   def update
     @test_passage.accept!(test_passage_params[:answer][:ids]) if test_passage_params[:answer].present?
     
@@ -32,14 +28,17 @@ class TestPassagesController < ApplicationController
   end
   
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
-    if result.created_at.present?
-      gist_url = "https://gist.github.com/#{result.owner.login}/#{result.id}"
+    service = GistQuestionService.new(@test_passage.current_question)
+    response = service.call
+    if service.success?
+      gist_url = "https://gist.github.com/#{response.owner.login}/#{response.id}"
       gist = current_user.gists.find_or_create_by(url: gist_url, question_id: @test_passage.current_question.id)
       flash_options = { notice: t('.success', gist_url: gist.url) }
     else
       flash_options = { notice: t('.failure') }
     end
+    
+    
     redirect_to test_passage_path(id: @test_passage.id), flash_options
   end
   
