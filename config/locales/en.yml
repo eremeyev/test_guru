@@ -113,6 +113,9 @@ en:
         number: "Number"
         text: "Text"
         actions: "Actions"
+      form_inline:
+        submit: "OK"
+        
     questions:
       question:
         edit: "Edit"

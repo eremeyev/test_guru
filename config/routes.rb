@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :gists
     resources :tests do
+      patch :update_inline, on: :member
+      
       resources :questions, shallow: true, only: %i[index new create edit show update destroy] do
         resources :answers, shallow: true, only: %i[index new create edit show update destroy]
       end

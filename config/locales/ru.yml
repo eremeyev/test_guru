@@ -120,6 +120,9 @@ ru:
         number: "Номер"
         text: "Текст"
         actions: "Действия"
+      form_inline:
+        submit: "OK"
+
     questions:
       question:
         edit: "Редактировать"

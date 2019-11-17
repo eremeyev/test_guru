@@ -3,6 +3,8 @@
   <%= t('.question') %>
   <%= @test_passage.current_question.number %>
   (<%= @test_passage.questions.count %>).
+  <%= @test_passage.current_question.number %>
+  <%= render 'progress' %>
   <p>
     <%= content_tag :strong, @test_passage.current_question.body %>
   </p>
