@@ -1,6 +1,8 @@
 <%= content_tag :h1, t('.title') %>
 <%= link_to t('.create_new_test'), new_admin_test_path(id: current_user.id) %>
-<br/><br/>
+<p>
+  <%= render 'shared/errors', resource: @test %>
+</p>
 <% if @tests.present? %>
   <table class='table table-bordered'>
     <tr>

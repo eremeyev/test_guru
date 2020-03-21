@@ -1,6 +1,6 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :set_test, only: %i[show update edit start destroy]
-  before_action :set_tests, only: %i[index]
+  before_action :set_test, only: %i[show update edit start destroy update_inline]
+  before_action :set_tests, only: %i[index update_inline]
   before_action :set_questions, only: %i[show update]
   layout 'admin'
   
@@ -27,6 +27,14 @@ class Admin::TestsController < Admin::BaseController
       redirect_to tests_path
     else
       render :edit
+    end
+  end
+  
+  def update_inline
+    if @test.update(test_params)
+      redirect_to admin_tests_path
+    else
+      render :index
     end
   end
   
