@@ -64,34 +64,34 @@ questions << Question.find_or_create_by(number: 4, test_id: tests[1].id, body: '
 #tests[0].save
 
 puts "-- Create Answers"
-Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is what we see in browser', correct: true)
-Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is html', correct: true)
-Answer.find_or_create_by(question_id: questions[0].id, user_id: users[0].id, body: 'View is what we see in browser', correct: true)
+Answer.find_or_create_by(question_id: questions[0].id, body: 'View is what we see in browser', correct: true)
+Answer.find_or_create_by(question_id: questions[0].id, body: 'View is html', correct: true)
+Answer.find_or_create_by(question_id: questions[0].id, body: 'View is what we see in browser', correct: true)
 
-Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'Controller is file', correct: true)
-Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'text', correct: false)
-Answer.find_or_create_by(question_id: questions[1].id, user_id: users[1].id, body: 'css', correct: false)
+Answer.find_or_create_by(question_id: questions[1].id, body: 'Controller is file', correct: true)
+Answer.find_or_create_by(question_id: questions[1].id, body: 'text', correct: false)
+Answer.find_or_create_by(question_id: questions[1].id, body: 'css', correct: false)
 
-Answer.find_or_create_by(question_id: questions[2].id, user_id: users[1].id, body: 'this one', correct: true)
-Answer.find_or_create_by(question_id: questions[2].id, user_id: users[1].id, body: '222', correct: false)
-Answer.find_or_create_by(question_id: questions[2].id, user_id: users[1].id, body: '333', correct: false)
+Answer.find_or_create_by(question_id: questions[2].id, body: 'this one', correct: true)
+Answer.find_or_create_by(question_id: questions[2].id, body: '222', correct: false)
+Answer.find_or_create_by(question_id: questions[2].id, body: '333', correct: false)
 
-Answer.find_or_create_by(question_id: questions[3].id, user_id: users[1].id, body: 'this one', correct: true)
-Answer.find_or_create_by(question_id: questions[3].id, user_id: users[1].id, body: '555', correct: false)
-Answer.find_or_create_by(question_id: questions[3].id, user_id: users[1].id, body: '666', correct: false)
+Answer.find_or_create_by(question_id: questions[3].id, body: 'this one', correct: true)
+Answer.find_or_create_by(question_id: questions[3].id, body: '555', correct: false)
+Answer.find_or_create_by(question_id: questions[3].id, body: '666', correct: false)
 
-Answer.find_or_create_by(question_id: questions[4].id, user_id: users[1].id, body: 'this one', correct: true)
-Answer.find_or_create_by(question_id: questions[4].id, user_id: users[1].id, body: '555', correct: false)
-Answer.find_or_create_by(question_id: questions[4].id, user_id: users[1].id, body: '666', correct: false)
+Answer.find_or_create_by(question_id: questions[4].id, body: 'this one', correct: true)
+Answer.find_or_create_by(question_id: questions[4].id, body: '555', correct: false)
+Answer.find_or_create_by(question_id: questions[4].id, body: '666', correct: false)
 
-Answer.find_or_create_by(question_id: questions[5].id, user_id: users[1].id, body: 'this one', correct: true)
-Answer.find_or_create_by(question_id: questions[5].id, user_id: users[1].id, body: '555', correct: false)
-Answer.find_or_create_by(question_id: questions[5].id, user_id: users[1].id, body: '666', correct: false)
+Answer.find_or_create_by(question_id: questions[5].id, body: 'this one', correct: true)
+Answer.find_or_create_by(question_id: questions[5].id, body: '555', correct: false)
+Answer.find_or_create_by(question_id: questions[5].id, body: '666', correct: false)
 
-Answer.find_or_create_by(question_id: questions[6].id, user_id: users[1].id, body: 'this one', correct: true)
-Answer.find_or_create_by(question_id: questions[6].id, user_id: users[1].id, body: '555', correct: false)
-Answer.find_or_create_by(question_id: questions[6].id, user_id: users[1].id, body: '666', correct: false)
+Answer.find_or_create_by(question_id: questions[6].id, body: 'this one', correct: true)
+Answer.find_or_create_by(question_id: questions[6].id, body: '555', correct: false)
+Answer.find_or_create_by(question_id: questions[6].id, body: '666', correct: false)
 
-Answer.find_or_create_by(question_id: questions[7].id, user_id: users[1].id, body: 'this one', correct: true)
-Answer.find_or_create_by(question_id: questions[7].id, user_id: users[1].id, body: '555', correct: false)
-Answer.find_or_create_by(question_id: questions[7].id, user_id: users[1].id, body: '666', correct: false)
+Answer.find_or_create_by(question_id: questions[7].id, body: 'this one', correct: true)
+Answer.find_or_create_by(question_id: questions[7].id, body: '555', correct: false)
+Answer.find_or_create_by(question_id: questions[7].id, body: '666', correct: false)
