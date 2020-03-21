@@ -1,0 +1,22 @@
+<%= content_tag :h1, t('.title') %>
+<%= link_to t('.create_new_test'), new_admin_test_path(id: current_user.id) %>
+<p>
+  <%= render 'shared/errors', resource: @test %>
+</p>
+<% if @tests.present? %>
+  <table class='table table-bordered'>
+    <tr>
+      <th><%= t('.number') %></th>
+      <th class="sort-by-title pointer">
+        <%= t('.test_title') %>
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-success hide' %>
+      </th>
+      <th><%= t('.questions_qty') %></th>
+      <th colspan="4"><%= t('.actions') %></th>
+    </tr>
+    <%= render @tests %>
+  </table>
+<% else %>
+  There is no tests created yet.
+<% end %>

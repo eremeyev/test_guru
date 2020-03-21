@@ -1,5 +1,17 @@
-<div class="header">
-  <%= content_tag :h3, flash[:notice], style: "color:green;" if flash[:notice].present? %>
-  Welcome, <%= @current_user.id %>!<br/>
-  <%= nav %>
+<div class='navbar-brand'>
+  <%= logo %>
+  <%= greating + logout if user_signed_in?%>
 </div>
+<div class='navbar navbar-dark bg-dark'>
+  <span class='navbar-text'>
+    <% if user_signed_in? %>
+      <%= nav %> |
+      <%= link_to_unless_current t('.manage_tests'), admin_tests_path if current_user.admin? %> |
+      <%= link_to_unless_current t(".gists"), admin_gists_path if current_user.admin? %>
+    <% else %>
+      <%= signup %> |
+      <%= login %>
+    <% end %>
+  </span>
+</div>
+<%= render partial: 'shared/flash' %>

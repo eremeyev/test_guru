@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= gist_counter + 1 %>
+  </td>
+  <td>
+    <%= link_to gist.question.body.truncate(25), admin_question_path(gist.question) %>
+  </td>
+  <td>
+    <%= link_to "show on GitHub", gist.url %>
+  </td>
+  <td>
+    <%= gist.user.email %>
+  </td>
+</tr>

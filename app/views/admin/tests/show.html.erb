@@ -1,0 +1,10 @@
+<%= content_tag :h2, t('admin.test.title', title: @test.title ) %>
+<%= content_tag :h3, t('.title') %>
+<table>
+  <tr>
+    <th><%= t('.number') %></th>
+    <th><%= t('.text') %></th>
+    <th colspan="3"><%= t('.actions') %></th>
+  </tr>
+  <%= render partial: 'admin/questions/question', collection: @questions %>
+</table>

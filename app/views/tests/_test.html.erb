@@ -2,26 +2,17 @@
   <td>
     <%= test_counter + 1 %>
   </td>
-  <td>
+  <td class="title">
     <%= test.title %>
   </td>
   <td>
-    <%= link_to test.questions.count, test_questions_path(test_id: test) %>
+    <%= test.questions.count %>
   </td>
   <td>
-    <%= progress_message(test, @current_user) %>
+    <%= progress_message(test, current_user) %>
   </td>
   <td>
-    <%#= link_to 'Show', test_path(test) %>
-  </td>
-  <td>
-    <%#= link_to 'Edit', edit_test_path(test) %>
-  </td>
-  <td>
-    <%#= button_to "Delete", test_path(test), method: :delete, data: {confirm: "Вы уверены?"} %>
-  </td>
-  <td>
-    <%= button_to "Start", start_test_path(test) if test.questions.present? %>
-    <%= "No questions can't start test. Add questions." if test.questions.blank? %>
+    <%= button_to t('.start'), start_test_path(test), class: 'btn btn-primary' if test.questions.present? %>
+    <%= t('.no_questions_message') if test.questions.blank? %>
   </td>
 </tr>

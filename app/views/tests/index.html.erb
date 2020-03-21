@@ -1,13 +1,16 @@
-<%= content_tag :h1, "Test passages:" %>
-<%#= link_to "Create new test", new_user_test_path(id: @current_user.id) %>
+<%= content_tag :h1, t('.title') %>
 <br/><br/>
-<table>
+<table class='table table-bordered'>
   <tr>
-    <th>Num</th>
-    <th>Text</th>
-    <th>Questions qty</th>
-    <th>Progress</th>
-    <th colspan="4">Actions</th>
+    <th><%= t('.number') %></th>
+    <th class="sort-by-title pointer">
+        <%= t('.test_title') %>
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
+    <th><%= t('.questions_qty') %></th>
+    <th><%= t('.progress') %></th>
+    <th><%= t('.actions') %></th>
   </tr>
   <%= render @tests %>
 </table>
