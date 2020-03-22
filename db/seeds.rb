@@ -29,6 +29,9 @@ if u.blank?
   u.save
   users << u
 end
+a = Admin.where(login: 'admin', email: 'admin@example.com', first_name: 'Admin', last_name: 'Super', confirmed_at: Time.now).first_or_create
+a.password = "123456"
+a.save
 
 puts "-- Create My Tests"
 tests = []
