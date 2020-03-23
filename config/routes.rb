@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     end
   end
   
+  get :feedback, to: "application#feedback"
+  patch :submit_feedback, to: "application#submit_feedback"
+  
   root to: 'tests#index'
    
 end

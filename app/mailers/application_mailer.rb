@@ -1,4 +1,10 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: %{"TestGuru" <mail@testguru.com>}
   layout 'mailer'
+  default from: %{"TestGuru" <mail@testguru.com>},
+          to: "andrey.eremeyev@gmail.com"
+  
+  def submit_feedback(text)
+    mail subject: 'Feedback', body: text
+  end
+
 end

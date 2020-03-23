@@ -1,0 +1,22 @@
+<div class='row justify-content-center mt-3 mb-3'>
+  <div class='col col-md-6'>
+    <h2><%= t('feedback') %></h2>
+    <div class='card mt-3 border-primary'>
+      <div class='card-body'>
+        <%= form_for(@resource, url: submit_feedback_path) do |f| %>
+          <div class='form-group'>
+
+            <p>
+              <%= f.label :text %><br/>
+              <%= text_area_tag :text, "", placeholder: "Type your thoughts here", class: 'form-control' %>
+            </p>
+
+            <p class="actions mt-1">
+              <%= f.submit "Submit", class: 'btn btn-primary' %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>  
+</div>  

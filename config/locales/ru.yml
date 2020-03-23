@@ -40,6 +40,7 @@ ru:
   login: 'Войти' 
   logout: 'Выйти' 
   sign_up: 'Регистрация'
+  feedback: 'Обратная связь'
 
   helpers:
     submit:
