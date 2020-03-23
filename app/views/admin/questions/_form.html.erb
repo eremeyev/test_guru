@@ -1,5 +1,6 @@
 <%= form_for [:admin, @test, @question] do |f| %>
   <%= f.text_area :body, class: "form-control" %>
   <%= render 'answers', class: "form-control", locals: {f: f} if @question.persisted? %>
+  <br/>
   <%= f.submit %>
 <% end %>

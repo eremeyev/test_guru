@@ -134,6 +134,8 @@ ru:
     questions:
       new:
         question_for_test: "Вопрос для Теста"
+      edit:
+        question_for_test: "Вопрос для Теста"
       question:
         edit: "Редактировать"
         delete: "Удалить"

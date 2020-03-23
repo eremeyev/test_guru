@@ -126,6 +126,8 @@ en:
     questions:
       new:
         question_for_test: "Question for Test"
+      edit:
+        question_for_test: "Question for Test"
       question:
         edit: "Edit"
         delete: "Delete"
