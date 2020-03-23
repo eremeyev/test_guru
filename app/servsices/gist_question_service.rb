@@ -1,6 +1,7 @@
 class GistQuestionService
 
   def initialize(question)
+    binding.pry
     @question = question
     @test = @question.test
     @client = Octokit::Client.new(:access_token => ENV['GIT_HUB_ACCESS_TOKEN'])

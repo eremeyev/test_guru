@@ -1,6 +1,7 @@
 <%= content_tag :h2, t('admin.test.title', title: @test.title ) %>
 <%= content_tag :h3, t('.title') %>
-<table>
+<%= link_to t('.create_new_question'), new_admin_test_question_path(test_id: @test.id) %>
+<table class="table table-bordered">
   <tr>
     <th><%= t('.number') %></th>
     <th><%= t('.text') %></th>

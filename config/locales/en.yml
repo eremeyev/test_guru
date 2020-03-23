@@ -41,6 +41,12 @@ en:
   logout: 'Logout' 
   sign_up: 'Sign up' 
   gist_question: 'Gist Question'
+  create: "Create"
+  edit: "Edit"
+
+  application:
+    submit_feedback:
+      success: "Submitted successfuly!"
 
   helpers:
     submit:
@@ -113,10 +119,13 @@ en:
         number: "Number"
         text: "Text"
         actions: "Actions"
+        create_new_question: "Create a New Question"
       form_inline:
         submit: "OK"
         
     questions:
+      new:
+        question_for_test: "Question for Test"
       question:
         edit: "Edit"
         delete: "Delete"

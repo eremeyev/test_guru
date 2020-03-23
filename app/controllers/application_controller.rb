@@ -23,5 +23,6 @@ class ApplicationController < ActionController::Base
 
   def submit_feedback
     ApplicationMailer.submit_feedback(params[:text]).deliver_now
+    redirect_to :feedback, notice: t('.success')
   end
 end

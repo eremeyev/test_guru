@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: :author_id
-  has_many :questions, -> { order(:id) }
+  has_many :questions, -> { order(:id) }, dependent: :destroy
   has_many :correct_answers, -> { where(correct: true) }, through: :questions, source: :answers
   has_many :test_passages, dependent: :destroy
   has_many :users, through: :test_passages

@@ -41,6 +41,12 @@ ru:
   logout: 'Выйти' 
   sign_up: 'Регистрация'
   feedback: 'Обратная связь'
+  create: "Создать"
+  edit: "Редактировать"
+  
+  application:
+    submit_feedback:
+      success: "Успешно отправлено!"
 
   helpers:
     submit:
@@ -121,10 +127,13 @@ ru:
         number: "Номер"
         text: "Текст"
         actions: "Действия"
+        create_new_question: "Создать Новый Вопрос"
       form_inline:
         submit: "OK"
 
     questions:
+      new:
+        question_for_test: "Вопрос для Теста"
       question:
         edit: "Редактировать"
         delete: "Удалить"
