@@ -16,4 +16,13 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     current_user.admin? ? admin_tests_path : root_path
   end
+  
+  def feedback
+    @resource = current_user
+  end
+
+  def submit_feedback
+    ApplicationMailer.submit_feedback(params[:text]).deliver_now
+    redirect_to :feedback, notice: t('.success')
+  end
 end
