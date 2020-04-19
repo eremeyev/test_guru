@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :gists
   has_many :tests, through: :test_passages
   has_many :my_tests, class_name: 'Test', foreign_key: :author_id
+  has_and_belongs_to_many :badges
+  has_many :badge_checkers
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   
   def tests_by_level(level)

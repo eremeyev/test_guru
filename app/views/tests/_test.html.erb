@@ -6,10 +6,24 @@
     <%= test.title %>
   </td>
   <td>
+    <%= test.category.title %>
+  </td>
+  <td>
+    <%= test.level %>
+  </td>
+  <td>
     <%= test.questions.count %>
   </td>
   <td>
-    <%= progress_message(test, current_user) %>
+    <% test_passages = current_user.test_passages.where(test_id: test.id) %>
+    <% if test_passages.present? %>
+      <% test_passages.each.with_index(1) do |test_passage, index| %>
+        <%= index %>.
+        <%= progress_message(test_passage, current_user) %>
+      <% end %>
+    <% else %>
+      There was no attempts yet.
+    <% end %>
   </td>
   <td>
     <%= button_to t('.start'), start_test_path(test), class: 'btn btn-primary' if test.questions.present? %>

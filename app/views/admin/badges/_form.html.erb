@@ -1,0 +1,66 @@
+<%= content_tag :h3, t('edit_badge') %>
+
+<%= form_for [:admin, @badge] do |f| %>
+  <%= content_tag :b, (f.label :name) %>
+  <%= f.text_field :name, class: "form-control" %>
+  <br/>
+  <div class="row">
+    <div class="col-lg-2"
+         onclick="$('#images').toggle();"
+         title="Click to change"
+    >
+      <%= octicon @badge.image, 
+        style: "color: #{@badge.color};", 
+        height: '30', 
+        width: '35',
+        id: 'image'
+      %>
+      <%= f.hidden_field :image, class: "form-control", readonly: true %>
+      <%= f.hidden_field :color, class: "form-control", readonly: true %>
+    </div>
+    <div id="images" style='display: none; position: absolute; left: 55px; background-color: white; z-index: 100; border: 2px solid grey; border-radius: 5px;'>
+      <% Rule::COLORS.each do |color| %>
+        <% Rule::IMAGES.each do |image| %>
+
+          <%= octicon image, 
+            style: "color: #{color}; border: 1px solid white; padding: 1px; border-radius: 4px;", 
+            height: '30', 
+            width: '30', 
+            onclick: "
+              $('#badge_image').val('#{image}');
+              $('#badge_color').val('#{color}');
+              $('#image')[0].innerHTML = $(this)[0].innerHTML;
+              $('#image').css({'color': $(this).css('color')});
+              $('#images').hide();
+            ",
+            onmouseover: "
+              $(this).css({'border': '1px solid blue'})
+            ",
+            onmouseout: "
+              $(this).css({'border': '1px solid white'})
+            "
+          %>
+        <% end %>
+        <br/>
+      <% end %>
+    </div>
+  </div>
+  <br/>
+  <h5>
+    <%= link_to "Rules:", admin_rules_path, title: "Click to edit rules" %>
+  </h5>
+  <p>
+  </p>
+  <%= f.collection_check_boxes :rule_ids, Rule.all, :id, :content do |b| %>
+    <p class='form-check'>
+      <%= b.label class: 'form-check-label' do %>
+        <%= b.check_box id: "rule_id_#{b.object.id}", name: "badge[rule_ids][]" %>
+        <%= b.object.content.join(' ') %>
+      <% end %>
+    </p>
+  <% end %>
+
+  <br/>
+  <br/> 
+  <%= f.submit class: 'btn btn-success' %>
+<% end %>

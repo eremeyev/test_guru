@@ -15,31 +15,36 @@ categories << Category.find_or_create_by(title: 'Operating systems')
 
 puts "-- Create Users"
 users = []
-u = User.find_by(email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe', confirmed_at: Time.now)
+u = User.find_by(email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
 if u.blank?
   u = User.new(login: 'john', email: 'john_doe@example.com', first_name: 'John', last_name: 'Doe')
+  u.confirmed_at = Time.now
   u.password = '123456'
   u.save
-  users << u
 end
-u = User.find_by(email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar', confirmed_at: Time.now)
+users << u
+
+u = User.find_by(email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
 if u.blank?
   u = User.new(login: 'foo', email: 'foo_bar@example.com', first_name: 'Foo', last_name: 'Bar')
+  u.confirmed_at = Time.now
   u.password = '123456'
   u.save
-  users << u
 end
+users << u
+
 a = Admin.where(login: 'admin', email: 'admin@example.com', first_name: 'Admin', last_name: 'Super', confirmed_at: Time.now).first_or_create
 a.password = "123456"
 a.save
+users << a
 
 puts "-- Create My Tests"
 tests = []
-tests << Test.find_or_create_by(title: "Rails", level: 0, category_id: categories[0].id, author_id: users[0].id)
-tests << Test.find_or_create_by(title: "Elixir", level: 1, category_id: categories[0].id, author_id: users[0].id)
-tests << Test.find_or_create_by(title: "Ruby",  level: 0, category_id: categories[1].id, author_id: users[1].id)
-tests << Test.find_or_create_by(title: "HTML",  level: 5, category_id: categories[2].id, author_id: users[1].id)
-tests << Test.find_or_create_by(title: "CSS",   level: 7, category_id: categories[3].id, author_id: users[1].id)
+tests << t1 = Test.find_or_create_by(title: "Rails",  level: 'simple', category_id: categories[0].id, author_id: users[0].id)
+tests << t2 = Test.find_or_create_by(title: "Elixir", level: 'simple', category_id: categories[0].id, author_id: users[0].id)
+tests << t3 = Test.find_or_create_by(title: "Ruby",   level: 'middle', category_id: categories[1].id, author_id: users[1].id)
+tests << t4 = Test.find_or_create_by(title: "HTML",   level: 'middle', category_id: categories[2].id, author_id: users[1].id)
+tests << t5 = Test.find_or_create_by(title: "CSS",    level: 'hard',   category_id: categories[3].id, author_id: users[1].id)
 
 puts "-- Create Test Passages"
 test_passages = []
@@ -98,3 +103,8 @@ Answer.find_or_create_by(question_id: questions[6].id, body: '666', correct: fal
 Answer.find_or_create_by(question_id: questions[7].id, body: 'this one', correct: true)
 Answer.find_or_create_by(question_id: questions[7].id, body: '555', correct: false)
 Answer.find_or_create_by(question_id: questions[7].id, body: '666', correct: false)
+
+puts "-- Create Badges and Rules"
+b1 = Badge.find_or_create_by(name: "All tests of category 'Front end' is 100% success")
+b1.rules << Rule.find_or_create_by(content: ["category.title", "==",  "Front end"])
+b1.rules << Rule.find_or_create_by(content: ["test_passage.percents_of_success", "==", 100] )

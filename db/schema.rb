@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_124440) do
+ActiveRecord::Schema.define(version: 2020_04_17_233452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,40 @@ ActiveRecord::Schema.define(version: 2020_03_20_124440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badge_checkers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "badge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "badge_checkers_test_passages", force: :cascade do |t|
+    t.integer "badge_checker_id"
+    t.integer "test_passage_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "color"
+  end
+
+  create_table "badges_rules", force: :cascade do |t|
+    t.bigint "badge_id"
+    t.bigint "rule_id"
+    t.index ["badge_id"], name: "index_badges_rules_on_badge_id"
+    t.index ["rule_id"], name: "index_badges_rules_on_rule_id"
+  end
+
+  create_table "badges_users", force: :cascade do |t|
+    t.bigint "badge_id"
+    t.bigint "user_id"
+    t.index ["badge_id"], name: "index_badges_users_on_badge_id"
+    t.index ["user_id"], name: "index_badges_users_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -49,6 +83,12 @@ ActiveRecord::Schema.define(version: 2020_03_20_124440) do
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
+  create_table "rules", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "test_passages", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "test_id"
@@ -64,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_124440) do
 
   create_table "tests", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "level", default: 0, null: false
+    t.string "level", default: "0", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,6 +142,10 @@ ActiveRecord::Schema.define(version: 2020_03_20_124440) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "badges_rules", "badges"
+  add_foreign_key "badges_rules", "rules"
+  add_foreign_key "badges_users", "badges"
+  add_foreign_key "badges_users", "users"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

@@ -1,0 +1,15 @@
+<%= content_tag :h1, t('.badges') %>
+<% if @badges.present? %>
+  <table class='table table-bordered'>
+    <tr>
+      <th><%= t('.number') %></th>
+      <th><%= t('.name') %></th>
+      <th><%= t('.rules') %></th>
+      <th><%= t('.image') %></th>
+      <th><%= t('.have_that_badge') %></th>
+    </tr>
+    <%= render @badges %>
+  </table>
+<% else %>
+  <%= t('.no_badges_yet') %>
+<% end %>
