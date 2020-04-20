@@ -39,16 +39,11 @@ ActiveRecord::Schema.define(version: 2020_04_17_233452) do
   create_table "badges", force: :cascade do |t|
     t.string "name"
     t.string "image"
+    t.string "color"
+    t.string "method"
+    t.string "args"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "color"
-  end
-
-  create_table "badges_rules", force: :cascade do |t|
-    t.bigint "badge_id"
-    t.bigint "rule_id"
-    t.index ["badge_id"], name: "index_badges_rules_on_badge_id"
-    t.index ["rule_id"], name: "index_badges_rules_on_rule_id"
   end
 
   create_table "badges_users", force: :cascade do |t|
@@ -75,18 +70,12 @@ ActiveRecord::Schema.define(version: 2020_04_17_233452) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.integer "number"
     t.text "body", null: false
     t.bigint "test_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "number"
     t.index ["test_id"], name: "index_questions_on_test_id"
-  end
-
-  create_table "rules", force: :cascade do |t|
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -94,9 +83,9 @@ ActiveRecord::Schema.define(version: 2020_04_17_233452) do
     t.bigint "test_id"
     t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
+    t.string "answer_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "answer_ids"
     t.index ["current_question_id"], name: "index_test_passages_on_current_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
@@ -104,11 +93,11 @@ ActiveRecord::Schema.define(version: 2020_04_17_233452) do
 
   create_table "tests", force: :cascade do |t|
     t.string "title", null: false
-    t.string "level", default: "0", null: false
+    t.string "level", default: "simple", null: false
     t.bigint "category_id", null: false
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "author_id"
     t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
@@ -119,6 +108,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_233452) do
     t.string "email", default: "", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "type", default: "User", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
@@ -134,16 +124,12 @@ ActiveRecord::Schema.define(version: 2020_04_17_233452) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "type", default: "User", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["type"], name: "index_users_on_type"
   end
 
   add_foreign_key "answers", "questions"
-  add_foreign_key "badges_rules", "badges"
-  add_foreign_key "badges_rules", "rules"
   add_foreign_key "badges_users", "badges"
   add_foreign_key "badges_users", "users"
   add_foreign_key "gists", "questions"

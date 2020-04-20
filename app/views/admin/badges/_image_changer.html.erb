@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-2"
+       onclick="$('#images').toggle();"
+       title="Click to change"
+  >
+    <% if @badge.image.blank? %>
+      Click to choose
+    <% end %>
+    <%= octicon @badge.image, 
+      style: "color: #{@badge.color};", 
+      height: '30', 
+      width: '35',
+      id: 'image'
+    %>
+    <%= f.hidden_field :image, class: "form-control", readonly: true %>
+    <%= f.hidden_field :color, class: "form-control", readonly: true %>
+  </div>
+  <div id="images" style='display: none; position: absolute; left: 55px; background-color: white; z-index: 100; border: 2px solid grey; border-radius: 5px;'>
+    <% Badge::COLORS.each do |color| %>
+      <% Badge::IMAGES.each do |image| %>
+
+        <%= octicon image, 
+          style: "color: #{color}; border: 1px solid white; padding: 1px; border-radius: 4px;", 
+          height: '30', 
+          width: '30', 
+          onclick: "
+            $('#badge_image').val('#{image}');
+            $('#badge_color').val('#{color}');
+            $('#image')[0].innerHTML = $(this)[0].innerHTML;
+            $('#image').css({'color': $(this).css('color')});
+            $('#images').hide();
+          ",
+          onmouseover: "
+            $(this).css({'border': '1px solid blue'})
+          ",
+          onmouseout: "
+            $(this).css({'border': '1px solid white'})
+          "
+        %>
+      <% end %>
+      <br/>
+    <% end %>
+  </div>
+</div>

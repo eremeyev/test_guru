@@ -1,34 +1,18 @@
 class Badge < ApplicationRecord
   has_and_belongs_to_many :users
-  has_and_belongs_to_many :rules
   has_many :badge_checkers
   validates_uniqueness_of :name
   validates_presence_of :name
+  validate :validate_method_is_permitted #, { message: "Not permitted parts of sentence" }
   serialize :rules, Hash
   
-  def check(test_passage)
-    combined_rule = self.rules.pluck(:content).map{|c| c.join(' ')}.join(' and ')
-    test_passage.instance_eval(combined_rule)
-  end
-  
-  def combined_rule
-    rules.pluck(:content).map{|c| c.join(' ')}.join(' and ')
-  end
-  
-  BADGES = %w[
-    all_simple_tests?
-    all_middle_tests?
-    all_hard_tests?
-    all_rails_tests?
-    first_attempt_is_successful?
-  ]
-  
-  def satisfy?(test_passages)
-    
-#    combined_rule = self.rules.pluck(:content).map{|c| c.join(' ')}.join(' and ')
-#    test_passages
-#    test_passage.instance_eval(combined_rule)
+  IMAGES = %w[star rocket mortar-board flame light-bulb verified]
+  COLORS = %w[red orange green blue darkblue purple]
 
-    test_passages.all_simple_tests? && test_passages.all_successful?
+  private
+
+  def validate_method_is_permitted
+    return false if method.blank?
+    ActiveRecord::Relation.instance_methods.include?(method.to_sym)
   end
 end

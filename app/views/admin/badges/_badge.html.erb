@@ -6,14 +6,13 @@
     <%= badge.name %>
   </td>
   <td>
-    <%= octicon badge.image, style: "color: #{badge.color};" %>
+    <%= badge.method %>
   </td>
   <td>
-    <%= 
-      badge.rules.map do |rule| 
-        rule.content.join(' ')
-      end.join("<br/>AND</br>").html_safe 
-    %>
+    <%= badge.args %>
+  </td>
+  <td>
+    <%= octicon badge.image, style: "color: #{badge.color};" %>
   </td>
   <td>
     <%= link_to "Edit", edit_admin_badge_path(badge)  %>

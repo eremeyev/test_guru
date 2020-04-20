@@ -6,13 +6,6 @@
     <%= badge.name %>
   </td>
   <td>
-    <%= 
-      badge.rules.map do |rule| 
-        rule.content.join(' ')
-      end.join("<br/>AND</br>").html_safe 
-    %>
-  </td>
-  <td>
     <%= badge_helper(badge) %>
   </td>
   <td>

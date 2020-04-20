@@ -1,7 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: :author_id
-#  belongs_to :level
   has_many :questions, -> { order(:id) }, dependent: :destroy
   has_many :correct_answers, -> { where(correct: true) }, through: :questions, source: :answers
   has_many :test_passages, dependent: :destroy
@@ -23,13 +22,5 @@ class Test < ApplicationRecord
   
   def answer_ids(user)
     test_passages.where(user: user).last.try(:answer_ids) || []
-  end
-
-  class << self
-    def allowed_methods
-      {
-        level: LEVELS
-      }
-    end
   end
 end

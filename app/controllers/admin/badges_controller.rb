@@ -1,6 +1,6 @@
 class Admin::BadgesController < ApplicationController
   def index
-    @badges = Badge.all
+    @badges = Badge.all.order(:name)
   end
   
   def edit
@@ -36,7 +36,7 @@ class Admin::BadgesController < ApplicationController
   private
   
   def badge_params
-    params.require(:badge).permit(:name, :image, :color, rule_ids: [])
+    params.require(:badge).permit(:name, :image, :color, :method, :args)
   end
   
 end

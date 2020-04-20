@@ -8,20 +8,6 @@ class TestPassage < ApplicationRecord
   serialize :answer_ids
   has_and_belongs_to_many :badge_checkers
 
-  
-  class << self
-    def allowed_methods
-      {
-        "test.title" =>      { values: Test.pluck(:title), type: "string", operations: %w[==] },
-        level:               { values: Test::LEVELS, type: "string", operations: %w[==] },
-        percents_of_success: { values: (5..10).map{|i| i * 10}, type: "integer", operations: %w[== >= >] },
-        success?:            { values: [true, false], type: "boolean", operations: %w[== !=] },
-        "test_passages.attempts_qty" =>  { values: [1,2,3], type: "integer", operations: %w[== < <=] },
-        "category.title"             =>  { values: Category.pluck(:title), type: "string", operations: %w[== !=] }
-      }
-    end
-  end
-
   def level
     test.level
   end

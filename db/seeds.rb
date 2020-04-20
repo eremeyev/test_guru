@@ -1,10 +1,4 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 puts "-- Create Categories"
 categories = []
@@ -66,11 +60,6 @@ questions << Question.find_or_create_by(number: 2, test_id: tests[1].id, body: '
 questions << Question.find_or_create_by(number: 3, test_id: tests[1].id, body: 'Use MVC ?')
 questions << Question.find_or_create_by(number: 4, test_id: tests[1].id, body: 'Use Classes ?')
 
-#puts "-- Connect users and tests"
-#tests[0].users << users[0]
-#tests[0].author = users[1]
-#tests[0].save
-
 puts "-- Create Answers"
 Answer.find_or_create_by(question_id: questions[0].id, body: 'View is what we see in browser', correct: true)
 Answer.find_or_create_by(question_id: questions[0].id, body: 'View is html', correct: true)
@@ -103,8 +92,3 @@ Answer.find_or_create_by(question_id: questions[6].id, body: '666', correct: fal
 Answer.find_or_create_by(question_id: questions[7].id, body: 'this one', correct: true)
 Answer.find_or_create_by(question_id: questions[7].id, body: '555', correct: false)
 Answer.find_or_create_by(question_id: questions[7].id, body: '666', correct: false)
-
-puts "-- Create Badges and Rules"
-b1 = Badge.find_or_create_by(name: "All tests of category 'Front end' is 100% success")
-b1.rules << Rule.find_or_create_by(content: ["category.title", "==",  "Front end"])
-b1.rules << Rule.find_or_create_by(content: ["test_passage.percents_of_success", "==", 100] )
