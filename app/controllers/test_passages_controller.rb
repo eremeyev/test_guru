@@ -33,7 +33,7 @@ class TestPassagesController < ApplicationController
       badge_checker = current_user.badge_checkers.where(badge_id: badge.id).first_or_create
       badge_checker.test_passages << @test_passage
       
-      if badge_checker.test_passages.send(badge.method, eval("#{badge.args}"))  && badge_checker.test_passages.all_success?
+      if badge_checker.test_passages.send(badge.method, eval("#{badge.args}"))
         current_user.badges << badge
         badge_checker.test_passages = []
       end

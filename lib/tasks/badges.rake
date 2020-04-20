@@ -29,8 +29,8 @@ namespace :badges do
     b.update(
       image: 'rocket',
       color: 'red',
-      method: "count_eq",
-      args: 1
+      method: "is_successful?",
+      args: ':first'
     )
   end
 end
