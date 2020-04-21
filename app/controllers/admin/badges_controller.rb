@@ -30,7 +30,6 @@ class Admin::BadgesController < ApplicationController
   end
   
   def destroy
-    
   end
   
   private

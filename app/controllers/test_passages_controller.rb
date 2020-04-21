@@ -19,24 +19,12 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(test_passage_params[:answer][:ids]) if test_passage_params[:answer].present?
     
     if @test_passage.current_question.last?
-      check_for_badges
+      BadgesService.new(current_user, @test_passage).apply
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to tests_path
     else
       @test_passage.set_next_question!
       redirect_to test_passage_path(@test_passage)
-    end
-  end
-  
-  def check_for_badges
-    Badge.all.each do |badge|
-      badge_checker = current_user.badge_checkers.where(badge_id: badge.id).first_or_create
-      badge_checker.test_passages << @test_passage
-      
-      if badge_checker.test_passages.send(badge.method, eval("#{badge.args}"))
-        current_user.badges << badge
-        badge_checker.test_passages = []
-      end
     end
   end
   
