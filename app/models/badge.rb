@@ -1,8 +1,7 @@
 class Badge < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :badge_checkers
-  validates_uniqueness_of :name
-  validates_presence_of :name
+  validates :name, uniqueness: true, presence: true
   validate :validate_method_is_permitted #, { message: "Not permitted parts of sentence" }
   serialize :rules, Hash
   
