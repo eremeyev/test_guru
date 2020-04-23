@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'about/author', to: 'application#author'
   get 'about', to: 'application#about'
 
+  resources :badges, shallow: true
+  
   resources :tests, shallow: true, only: :index do
     member do
       post :start
@@ -18,9 +20,12 @@ Rails.application.routes.draw do
       post :gist
     end
   end
+
   
   namespace :admin do
     resources :gists
+    resources :badges
+    resources :rules
     resources :tests do
       patch :update_inline, on: :member
       

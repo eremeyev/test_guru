@@ -1,0 +1,15 @@
+<%= content_tag :h3, t('edit_badge') %>
+
+<%= form_for [:admin, @badge] do |f| %>
+  <%= content_tag :b, (f.label :name) %>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= content_tag :b, (f.label :method) %>
+  <%= f.text_field :method, class: "form-control" %>
+  <%= content_tag :b, (f.label :args) %>
+  <%= f.text_field :args, class: "form-control" %>
+  <br/>
+  <%= render partial: "image_changer", locals: {f: f} %>
+  <br/>
+  
+  <%= f.submit class: 'btn btn-success' %> or <%= link_to "Cancel", admin_badges_path %>
+<% end %>

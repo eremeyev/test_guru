@@ -1,0 +1,64 @@
+<%= render partial: 'shared/errors', locals: { resource: @rule } %>
+<%= javascript_tag "
+  var rule = [];
+" %>
+<table class='table table-bordered'>
+  <tr>
+    <th>Attribute</th>
+    <th>Compare operation</th>
+    <th>Values</th>
+  </tr>
+  <% Rule.list.each do |allowed_method_name, allowed_method_params| %>
+    <tr>
+      <td>
+        <%= content_tag :span,
+          allowed_method_name,
+          class: "badge badge-primary",
+          style: "font-size: 120%; cursor: pointer;",
+          onclick: "addToRule('#content_attribute','#{allowed_method_name}');"
+        %>
+      </td>
+      <td>
+        <% allowed_method_params[:operations].each do |compare_operator| %>
+          <%= content_tag :span,
+            compare_operator,
+            class: "badge badge-secondary",
+            style: "font-size: 100%; cursor: pointer;",
+            onclick: "addToRule('#content_operation','#{compare_operator}')"
+          %>
+        <% end %>
+      </td>
+      <td>
+        <% allowed_method_params[:values].each do |value| %>
+          <%= content_tag :span,
+            value,
+            class: "badge badge-secondary",
+            style: "font-size: 100%; cursor: pointer;",
+            onclick: "addValueToRule('#content_value', '#{value}', '#{allowed_method_params[:type]}');"
+          %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= render 'shared/errors', resource: @rule %>
+<%= form_for @new_rule, url: admin_rules_path, remote: true do |f| %> 
+  <div class='row'>
+    <div class='col-lg-4'>
+      <%= label_tag "Click on [attribute] to set [entry_type.attribute]" %>
+      <%= text_field_tag :content_attribute, "", name: "rule[content][attribute]", class: "form-control", readonly: true %>
+    </div>
+    <div class='col-lg-4'>
+      <%= label_tag "Click on [operation] to set [operation]"  %>
+      <%= text_field_tag :content_operation, "", name: "rule[content][operation]", class: "form-control", readonly: true %>
+    </div>
+    <div class='col-lg-4'>
+      <%= label_tag "Click on [value] corresponded to [attribute] to set [value]" %>
+      <%= text_field_tag :content_value, "",  name: "rule[content][value]", class: "form-control", readonly: true %>
+    </div>
+  </div>
+  <br/>
+    <%= submit_tag "Add Rule", class: 'btn btn-success' %>
+    <%= link_to "Reset", "#", class: 'btn btn-danger', onclick: "$('#rule_content').text(''); return false;" %>
+<% end %>

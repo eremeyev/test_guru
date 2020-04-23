@@ -2,17 +2,21 @@
   <%= logo %>
   <%= greating + "&nbsp;".html_safe + logout if user_signed_in?%>
 </div>
+<%= render partial: 'badges/badges' if current_user %>
 <div class='navbar navbar-dark bg-dark'>
   <span class='navbar-text'>
     <% if user_signed_in? %>
-      <%= nav %> |
-      <%= link_to_unless_current t('.manage_tests'), admin_tests_path if current_user.admin? %> |
-      <%= link_to_unless_current t(".gists"), admin_gists_path if current_user.admin? %> |
-      <%= link_to_unless_current t("feedback"), feedback_path %>
+      <%= nav %>
+      <% if current_user.admin? %>    
+        | <%= link_to_unless_current t('.manage_tests'), admin_tests_path %>
+        | <%= link_to_unless_current t('.manage_badges'), admin_badges_path %>
+        | <%= link_to_unless_current t(".gists"), admin_gists_path if current_user.admin? %>
+      <% end %>
+      | <%= link_to_unless_current t("feedback"), feedback_path %>
     <% else %>
       <%= signup %> |
       <%= login %>
     <% end %>
   </span>
 </div>
-<%= render partial: 'shared/flash' %>
+<%= render partial: 'shared/flash' %> 

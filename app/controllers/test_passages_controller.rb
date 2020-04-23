@@ -19,6 +19,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(test_passage_params[:answer][:ids]) if test_passage_params[:answer].present?
     
     if @test_passage.current_question.last?
+      BadgesService.new(current_user, @test_passage).apply
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to tests_path
     else

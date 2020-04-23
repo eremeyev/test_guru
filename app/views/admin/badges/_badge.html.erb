@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= badge_counter + 1 %>
+  </td>
+  <td>
+    <%= badge.name %>
+  </td>
+  <td>
+    <%= badge.method %>
+  </td>
+  <td>
+    <%= badge.args %>
+  </td>
+  <td>
+    <%= octicon badge.image, style: "color: #{badge.color};" %>
+  </td>
+  <td>
+    <%= link_to "Edit", edit_admin_badge_path(badge)  %>
+  </td>
+</tr>

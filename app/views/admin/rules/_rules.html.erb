@@ -1,0 +1,15 @@
+<% if @rules.present? %>
+  <table class='table table-bordered'>
+    <tr>
+      <th><%= t('.number') %></th>
+      <th><%= t('.body') %></th>
+      <th><%= t('.actions') %></th>
+    </tr>
+    <%= render @rules %>
+  </table>
+<% else %>
+  <%= t('.no_rules_yet') %>
+<% end %>
+
+<%= render partial: 'rule_constructor' %>
+
